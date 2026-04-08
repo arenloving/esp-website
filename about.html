@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Eastside Philosophy</title>
+  <link rel="stylesheet" href="styles.css?v=13">
+  <style>
+    /* Bio Modal */
+    .bio-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(26, 26, 26, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    .bio-overlay.active { display: flex; }
+    .bio-modal {
+      background: var(--cream);
+      border: 1px solid var(--light-border);
+      max-width: 520px;
+      width: 90%;
+      padding: 40px;
+      position: relative;
+      border-radius: 4px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+    }
+    .bio-modal .close-btn {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none; border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--warm-gray);
+      font-family: var(--serif);
+    }
+    .bio-modal .close-btn:hover { color: var(--dark-brown); }
+    .bio-modal h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+    .bio-modal .bio-role {
+      font-size: 0.85rem;
+      color: var(--accent-gold);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .bio-modal p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .team-card { cursor: pointer; transition: transform 0.2s ease; }
+    .team-card:hover { transform: translateY(-3px); }
+
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Eastside Philosophy</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lectures.html">Lectures</a></li>
+      <li><a href="interviews.html">Interviews</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="resources.html">Resource Library</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>About Us</h1>
+  </div>
+
+  <div class="page-container">
+
+    <!-- Executive Team -->
+    <div class="section">
+      <h2 class="team-section-title">Meet the Executive Team</h2>
+      <div class="team-grid">
+
+        <div class="team-card" onclick="openBio('aren')">
+          <div class="team-avatar">
+            <img src="images/aren.jpg" alt="Aren Loving">
+          </div>
+          <h3>Aren Loving</h3>
+          <p class="role">President</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('jeffery')">
+          <div class="team-avatar">
+            <img src="images/jeffery.jpg" alt="Jeffery Lou">
+          </div>
+          <h3>Jeffery Lou</h3>
+          <p class="role">Vice President</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('hennry')">
+          <div class="team-avatar">
+            <img src="images/hennry.jpg" alt="Hennry Lou">
+          </div>
+          <h3>Hennry Lou</h3>
+          <p class="role">Secretary</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('lucas')">
+          <div class="team-avatar">
+            <img src="images/lucas.jpg" alt="Lucas Ma">
+          </div>
+          <h3>Lucas Ma</h3>
+          <p class="role">Member</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bush School Team -->
+    <div class="section">
+      <h2 class="team-section-title">The Bush School Team</h2>
+      <div class="team-grid">
+
+        <div class="team-card" onclick="openBio('jason')">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M20 21a8 8 0 1 0-16 0"/>
+            </svg>
+          </div>
+          <h3>Jason Cheng</h3>
+          <p class="role">President</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('vivian')">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M20 21a8 8 0 1 0-16 0"/>
+            </svg>
+          </div>
+          <h3>Vivian Cayetano</h3>
+          <p class="role">Member</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('max')">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M20 21a8 8 0 1 0-16 0"/>
+            </svg>
+          </div>
+          <h3>Max Nichols</h3>
+          <p class="role">Member</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('tbd3')">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M20 21a8 8 0 1 0-16 0"/>
+            </svg>
+          </div>
+          <h3>TBD</h3>
+          <p class="role">To be announced</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bio Modal Overlay -->
+  <div class="bio-overlay" id="bioOverlay" onclick="closeBio(event)">
+    <div class="bio-modal" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeBio()">&times;</button>
+      <h3 id="bioName"></h3>
+      <div class="bio-role" id="bioRole"></div>
+      <p id="bioText"></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const bios = {
+      aren: {
+        name: 'Aren Loving',
+        role: 'President',
+        bio: 'Aren is a student at the International School in Bellevue. His interests lie in the theory of meaning and the philosophy of psychology. His readings include Schellenberg, Tolkien, Hume, and Thoreau. He hopes to raise awareness of the importance of philosophy and encourage others to engage with the ideas that have shaped the world. Beyond this commitment, he is a Boy Scout in Troop 430 in Medina, Washington, and plays competitive baseball.'
+      },
+      jeffery: {
+        name: 'Jeffery Lou',
+        role: 'Vice President',
+        bio: 'Jeffery is a sophomore at the International School in Bellevue, Washington. His interests lie in the philosophy of mathematics, particularly in the logic of deduction and mathematical statistics. He also enjoys competing in math competitions such as the American Invitational Mathematics Examination and playing the piano competitively, with Take Five as one of his favorite pieces. Outside of his academic interests, he plays tennis and enjoys reading Western philosophy, especially epistemology.'
+      },
+      hennry: {
+        name: 'Hennry Lou',
+        role: 'Secretary',
+        bio: "Hennry's main interests lie in theology, particularly systematic theology, with a focus on the study of the Christian religion, its history, and its traditions. He is also interested in physics, especially in areas such as mechanics and fluid dynamics. In addition to his academic pursuits, he studies music theory and is actively involved in jazz band, where he plays the piano. He loves to play the piano competitively, with a focus on Russian repertoire and modern pieces."
+      },
+      lucas: {
+        name: 'Lucas Ma',
+        role: 'Member',
+        bio: "Philosophy and literature has been a longtime passion of Lucas Ma. Since he picked up an Orwellian novel in the 5th grade, he became adamant about learning the ropes of ethics and metaphysics. His ability is best reflected in his presentation and oratory skills. He currently serves as the President of Beaver Development Society, as well as a concurrent tenure scaling a stealth mode startup. He also enjoys debate, competitive shotgun shooting, and trading."
+      },
+      jason: {
+        name: 'Jason Cheng',
+        role: 'President — Bush School Team',
+        bio: 'No bio available yet.'
+      },
+      vivian: { name: 'Vivian Cayetano', role: 'Member — Bush School Team', bio: 'No bio available yet.' },
+      max: { name: 'Max Nichols', role: 'Member — Bush School Team', bio: 'No bio available yet.' },
+      tbd3: { name: 'TBD', role: 'To be announced', bio: 'No bio available yet.' }
+    };
+
+    function openBio(key) {
+      const data = bios[key];
+      if (!data) return;
+      document.getElementById('bioName').textContent = data.name;
+      document.getElementById('bioRole').textContent = data.role;
+      document.getElementById('bioText').textContent = data.bio;
+      document.getElementById('bioOverlay').classList.add('active');
+    }
+
+    function closeBio(e) {
+      if (!e || e.target === document.getElementById('bioOverlay')) {
+        document.getElementById('bioOverlay').classList.remove('active');
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeBio();
+    });
+  </script>
+
+  <script src="animations.js"></script>
+</body>
+</html>

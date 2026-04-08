@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interviews — Eastside Philosophy</title>
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Eastside Philosophy</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lectures.html">Lectures</a></li>
+      <li><a href="interviews.html" class="active">Interviews</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="resources.html">Resource Library</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Interviews</h1>
+    <p class="subtitle">Conversations with scholars, thinkers, and professors</p>
+  </div>
+
+  <div class="page-container wide">
+
+    <!-- Interview 1 -->
+    <div class="section">
+      <div class="lecture-card">
+        <div class="lecture-images stacked">
+          <img src="images/interview-classroom.jpg" alt="Classroom during interview with Professor Behrends" style="object-position: center 40%;">
+          <img src="images/interview-presenter.jpg" alt="Students presenting during interview session" style="object-position: center 30%;">
+        </div>
+        <div class="lecture-info">
+          <p class="date">ESP Live Interview</p>
+          <h3>A Conversation on AI Ethics with the Director of Ethics @ Harvard</h3>
+          <p class="lecture-subtitle">Professor Jeffery Behrends</p>
+          <p>A live interview and discussion with Professor Jeffery Behrends, Director of Ethics at Harvard, exploring the ethical dimensions of artificial intelligence, moral responsibility in technology, and the philosophical foundations of AI governance.</p>
+          <a href="Behrends-AI-Ethics.pptx" class="btn" download>Access the Presentation →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
+  </footer>
+
+  <script src="animations.js"></script>
+</body>
+</html>

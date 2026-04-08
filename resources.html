@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resource Library — Eastside Philosophy</title>
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Eastside Philosophy</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lectures.html">Lectures</a></li>
+      <li><a href="interviews.html">Interviews</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="resources.html" class="active">Resource Library</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Resource Library</h1>
+    <p class="subtitle">Lessons, slides, and materials for independent learning</p>
+  </div>
+
+  <div class="page-container wide">
+    <div class="section">
+      <span class="section-label">Presentations</span>
+      <div class="resource-grid">
+
+        <div class="resource-item">
+          <div style="width: 100%; height: 120px; overflow: hidden; border-radius: 4px; margin-bottom: 16px;">
+            <img src="images/hal-9000.jpg" alt="HAL 9000" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+          </div>
+          <p class="resource-type">Presentation — June 2025</p>
+          <h3>Moral Implications of Synthetic Intelligence</h3>
+          <p>Ethics of AI, exploring artificial consciousness, personhood, subjective experience, and existential risk. Presented at the International School STEM Fair.</p>
+          <a href="Implications-of-Development-of-AGI.pptx" class="btn" download>Download Presentation →</a>
+        </div>
+
+        <div class="resource-item">
+          <div style="width: 100%; height: 120px; overflow: hidden; border-radius: 4px; margin-bottom: 16px;">
+            <img src="images/interview-classroom.jpg" alt="Interview with Professor Behrends" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%;">
+          </div>
+          <p class="resource-type">Interview Presentation</p>
+          <h3>AI Ethics with Professor Jeffery Behrends</h3>
+          <p>A conversation on AI ethics with the Director of Ethics at Harvard. Slides from the ESP Live interview session.</p>
+          <a href="Behrends-AI-Ethics.pptx" class="btn" download>Download Presentation →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="section-label">Additional Resources</span>
+      <div class="resource-grid">
+
+        <div class="resource-item">
+          <p class="resource-type">Coming Soon</p>
+          <h3>Lesson Plans &amp; Reading Guides</h3>
+          <p>Structured materials for engaging with foundational philosophical texts, from Plato to contemporary thinkers.</p>
+        </div>
+
+        <div class="resource-item">
+          <p class="resource-type">Coming Soon</p>
+          <h3>Discussion Slides</h3>
+          <p>Slide decks from past lectures and discussions, available for download and review.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
+  </footer>
+
+  <script src="animations.js"></script>
+</body>
+</html>

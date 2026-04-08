@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eastside Philosophy</title>
+  <link rel="stylesheet" href="styles.css?v=13">
+  <style>
+    /* Home-specific overrides for PLATO-style layout */
+    .home-hero {
+      margin-top: 110px;
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 110px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .home-hero img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .home-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(26, 24, 18, 0.55);
+    }
+    .home-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 60px 40px;
+    }
+    .home-hero-content h1 {
+      font-family: var(--serif);
+      font-size: 5.5rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+    .home-hero-content .hero-subtitle {
+      font-family: var(--sans);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 28px;
+    }
+    .home-hero-content p {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.85;
+      margin-bottom: 36px;
+    }
+    .home-hero-content .hero-btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #fff;
+      border: 2.5px solid #fff;
+      padding: 18px 48px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .home-hero-content .hero-btn:hover {
+      background: #fff;
+      color: #1A1A1A;
+    }
+
+    /* Mission section - full width gray band */
+    .home-mission {
+      background: #F0EBE3;
+      padding: 72px 0;
+    }
+    .mission-image {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .mission-image img {
+      width: 100%;
+      max-width: 860px;
+      border-radius: 6px;
+      border: 1px solid #E0D8CC;
+    }
+    .mission-image .caption {
+      font-size: 0.85rem;
+      color: #8A7E6B;
+      font-style: italic;
+      margin-top: 10px;
+    }
+    .home-mission-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .home-mission-inner h2 {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 400;
+      color: var(--dark-brown);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .home-mission-inner p {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--muted-brown);
+      margin-bottom: 18px;
+    }
+    .home-mission-inner .mission-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    /* Painting break */
+    .home-painting {
+      text-align: center;
+      padding: 60px 32px;
+      background: #F0EBE3;
+    }
+    .home-painting img {
+      max-width: 800px;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid var(--light-border);
+    }
+    .home-painting .caption {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    /* Closing statement */
+    .home-closing {
+      padding: 60px 0;
+      background: #F0EBE3;
+    }
+    .home-closing-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 48px;
+      text-align: center;
+    }
+    .home-closing-inner p {
+      font-size: 1.25rem;
+      line-height: 1.85;
+      color: var(--muted-brown);
+    }
+
+    @media (max-width: 768px) {
+      .home-hero { min-height: 70vh; }
+      .home-hero-content h1 { font-size: 3.2rem; }
+      .home-mission-inner .mission-columns {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Eastside Philosophy</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lectures.html">Lectures</a></li>
+      <li><a href="interviews.html">Interviews</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="resources.html">Resource Library</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Banner -->
+  <div class="home-hero">
+    <img src="images/school-of-athens.jpg" alt="The School of Athens by Raphael">
+    <div class="home-hero-content">
+      <div class="hero-subtitle">Philosophy Learning and Community</div>
+      <h1>Eastside Philosophy</h1>
+      <p>Dedicated to studying the great books and engaging with the fundamental questions of human life, truth, ethics, knowledge, and meaning. We build a community of students who care about thinking deeply, arguing clearly, and understanding the ideas that have shaped the world.</p>
+      <a href="about.html" class="hero-btn">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Mission Section (gray band) -->
+  <div class="home-mission">
+    <div class="home-mission-inner">
+      <h2>Our Mission</h2>
+      <p>Students are capable of far more than memorizing information, they're capable of thinking deeply, questioning meaningfully, and engaging with ideas that have shaped the world. Yet too often, education overlooks this potential.</p>
+      <p>We exist to change that. We cultivate clear, rigorous thinking by exposing students to the central questions of philosophy and giving them the tools to reason, analyze, and articulate ideas with precision. We aim to make philosophy accessible, engaging, and intellectually serious, creating a space where students are encouraged to think and grow.</p>
+      <div class="mission-image">
+        <img src="images/group-photo.jpg" alt="Eastside Philosophy group photo">
+        <p class="caption">Eastside Philosophy at International School</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- What We Offer - Full width banners -->
+  <div class="offering-banners">
+    <a href="lectures.html" class="offering-banner banner-lectures" style="background-image: url('images/lecture-wide.jpg');">
+      <div class="banner-content">
+        <h4>Lectures</h4>
+        <p>Presentations that break down complex philosophical ideas into clear, structured insights.</p>
+        <span class="banner-btn">View Lectures</span>
+      </div>
+    </a>
+    <a href="interviews.html" class="offering-banner banner-interviews" style="background-image: url('images/school-of-athens.jpg');">
+      <div class="banner-content">
+        <h4>Interviews</h4>
+        <p>Guest interviews and speaker events connecting students with scholars and professors.</p>
+        <span class="banner-btn">View Interviews</span>
+      </div>
+    </a>
+    <a href="forum.html" class="offering-banner banner-discussions" style="background-image: url('images/wanderer.jpg');">
+      <div class="banner-content">
+        <h4>Discussions &amp; Forum</h4>
+        <p>Live discussions and webinars that encourage debate, questioning, and active participation.</p>
+        <span class="banner-btn">Visit Forum</span>
+      </div>
+    </a>
+    <a href="resources.html" class="offering-banner banner-resources" style="background-image: url('images/banner-painting.jpg');">
+      <div class="banner-content">
+        <h4>Resource Library</h4>
+        <p>A free library of lessons, slides, and materials to support independent learning.</p>
+        <span class="banner-btn">Browse Resources</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Wanderer painting + closing -->
+  <div class="home-painting">
+    <img src="images/wanderer.jpg" alt="Wanderer above the Sea of Fog" style="max-width: 500px;">
+    <p class="caption">Wanderer above the Sea of Fog, Caspar David Friedrich, 1818</p>
+  </div>
+
+  <div class="home-closing">
+    <div class="home-closing-inner">
+      <p>Beyond engagement, our goal is depth. We believe that to truly understand the world, students must engage with the great books and foundational texts that have shaped human thought, works that define our ideas of justice, truth, knowledge, and society.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
+  </footer>
+
+  <script src="animations.js"></script>
+</body>
+</html>

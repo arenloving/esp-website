@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lectures — Eastside Philosophy</title>
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Eastside Philosophy</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lectures.html" class="active">Lectures</a></li>
+      <li><a href="interviews.html">Interviews</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="resources.html">Resource Library</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Lectures</h1>
+  </div>
+
+  <div class="page-container wide">
+
+    <!-- Lecture 1 -->
+    <div class="section">
+      <div class="lecture-card">
+        <div class="lecture-images stacked">
+          <img src="images/lecture-wide.jpg" alt="STEM Fair presentation — wide audience view">
+          <img src="images/lecture-speaker.jpg?v=2" alt="STEM Fair presentation — speaker on stage">
+        </div>
+        <div class="lecture-info">
+          <p class="date">June 5, 2025</p>
+          <h3>Moral Implications of Synthetic Intelligence</h3>
+          <p class="lecture-subtitle">Ethics of AI, STEM Fair, International School</p>
+          <p><strong>Artificial Consciousness &amp; Personhood</strong>: Subjective experience is what it feels like to <em>be</em> something. It is central to debates about machine consciousness and mind. Can AI really feel, or just simulate feeling?</p>
+          <p><strong>Existential &amp; Ethical Risk</strong>: As artificial systems grow more capable, the questions shift from theoretical to urgent. What obligations do we have toward synthetic minds, and what risks do they pose to us?</p>
+          <blockquote style="border-left: 3px solid #B8976A; padding: 16px 24px; margin: 24px 0; background: #F5F0EA; border-radius: 2px;">
+            <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; font-style: italic; color: #2C2418; margin: 0; line-height: 1.8;"><strong>Closing Question:</strong> As Michelangelo captured the divine spark between God and man, today we stand at a similar threshold, but we are in the role of creator. If we breathe consciousness into artificial minds, what responsibilities come with that act? Are we gods, parents, engineers, or something else entirely?</p>
+          </blockquote>
+          <a href="Implications-of-Development-of-AGI.pptx" class="btn" download>Access the Presentation →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Past Events -->
+    <div class="section">
+      <span class="section-label">Past Events &amp; Guest Speakers</span>
+      <h2>ESP Live &amp; ESP Lectures</h2>
+      <p>Past guest speakers, live discussions, and lecture events will be showcased here as they happen. Stay tuned.</p>
+
+      <div class="past-events-grid" style="margin-top: 32px;">
+        <div class="event-card">
+          <p class="event-type">ESP Lecture</p>
+          <h3>Moral Implications of Synthetic Intelligence</h3>
+          <p class="event-date">June 5, 2025, International School STEM Fair</p>
+        </div>
+        <!-- Future events will be added here -->
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
+  </footer>
+
+  <script src="animations.js"></script>
+</body>
+</html>

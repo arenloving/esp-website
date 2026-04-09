@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us — Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=34">
+  <link rel="stylesheet" href="styles.css?v=45">
   <style>
     /* Bio Modal */
     .bio-overlay {
@@ -115,7 +115,7 @@
 
   <!-- Navigation -->
   <nav class="site-nav">
-    <a href="index.html" class="nav-logo"><img src="images/owl.png?v=2" alt="ESP" class="nav-logo-img">Eastside Philosophy</a>
+    <a href="index.html" class="nav-logo"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -136,9 +136,14 @@
 
   <div class="page-container">
 
+    <!-- About Blurb -->
+    <div class="section">
+      <p style="font-size: 1.2rem; line-height: 1.85; color: #5C4F3D; text-align: left;">Eastside Philosophy is a student-led organization built on the belief that philosophy belongs in every classroom. We are a group of high school students from across the Eastside who are committed to making philosophy accessible, rigorous, and relevant. Through lectures, interviews with leading academics, and a growing resource library, we work to bring the foundational questions of human life into spaces where students can engage with them seriously. Our chapters span multiple schools, and our mission is simple: to help students think clearly, argue well, and engage with the ideas that have shaped the world.</p>
+    </div>
+
     <!-- Executive Team -->
     <div class="section">
-      <h2 class="team-section-title">Meet the Executive Team</h2>
+      <h2 class="team-section-title">Executive Team</h2>
       <div class="team-grid">
 
         <div class="team-card" onclick="openBio('aren')">
@@ -191,10 +196,7 @@
 
         <div class="team-card" onclick="openBio('jason')">
           <div class="team-avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M20 21a8 8 0 1 0-16 0"/>
-            </svg>
+            <img src="images/jason.jpg" alt="Jason Cheng">
           </div>
           <h3>Jason Cheng</h3>
           <p class="role">President</p>
@@ -257,7 +259,7 @@
       aren: {
         name: 'Aren Loving',
         role: 'President',
-        bio: 'Aren is a student at the International School in Bellevue. His interests lie in the theory of meaning and the philosophy of psychology. His readings include Schellenberg, Tolkien, Hume, and Thoreau. He hopes to raise awareness of the importance of philosophy and encourage others to engage with the ideas that have shaped the world. Beyond this commitment, he is a Boy Scout in Troop 430 in Medina, Washington, and plays competitive baseball.'
+        bio: 'Aren\'s interests lie in the philosophy of free will and the role of reason and empirical evidence in shaping our understanding of the world. He founded ESP with Jeffery as he believes that philosophy has become an incredibly important subject to study in recent years, and he aims to cultivate interest in philosophy as a way of developing the reasoning and judgment necessary to navigate the world. In addition, he is a Life Scout in Troop 430 in Medina, Washington, and plays competitive baseball. In his free time, he enjoys shooting shotguns and camping.'
       },
       jeffery: {
         name: 'Jeffery Lou',
@@ -282,7 +284,7 @@
       jason: {
         name: 'Jason Cheng',
         role: 'President — Bush School Team',
-        bio: 'No bio available yet.'
+        bio: 'Jason Chen is a sophomore at the Bush School in Seattle, Washington. He is a devoted Model United Nations (MUN) enthusiast and is actively staffing conferences like PACMUN. His philosophy fervor comes from his involvement in debates over contemporary social issues during committee, and his sense of civic duty. Readings by John Reich on the Common Good, as well as Albert Camus\'s essay on the Myth of Sisyphus, serve as valuable starting points on his journey. Outside of MUN, he engages in international trap shooting, freshwater aquascaping, and biology-related topics.'
       },
       vivian: { name: 'Vivian Cayetano', role: 'Member — Bush School Team', bio: 'No bio available yet.' },
       max: { name: 'Max Nichols', role: 'Member — Bush School Team', bio: 'No bio available yet.' },

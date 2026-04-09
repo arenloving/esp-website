@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=13">
+  <link rel="stylesheet" href="styles.css?v=34">
   <style>
     /* Home-specific overrides for PLATO-style layout */
     .home-hero {
@@ -176,7 +176,7 @@
 
   <!-- Navigation -->
   <nav class="site-nav">
-    <a href="index.html" class="nav-logo">Eastside Philosophy</a>
+    <a href="index.html" class="nav-logo"><img src="images/owl.png?v=2" alt="ESP" class="nav-logo-img">Eastside Philosophy</a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -216,6 +216,9 @@
 
   <!-- What We Offer - Full width banners -->
   <div class="offering-banners">
+    <div style="text-align: center; margin-bottom: 12px;">
+      <span class="section-label" style="text-align: center;">What We Offer</span>
+    </div>
     <a href="lectures.html" class="offering-banner banner-lectures" style="background-image: url('images/lecture-wide.jpg');">
       <div class="banner-content">
         <h4>Lectures</h4>
@@ -246,17 +249,232 @@
     </a>
   </div>
 
-  <!-- Wanderer painting + closing -->
-  <div class="home-painting">
-    <img src="images/wanderer.jpg" alt="Wanderer above the Sea of Fog" style="max-width: 500px;">
-    <p class="caption">Wanderer above the Sea of Fog, Caspar David Friedrich, 1818</p>
-  </div>
-
   <div class="home-closing">
     <div class="home-closing-inner">
       <p>Beyond engagement, our goal is depth. We believe that to truly understand the world, students must engage with the great books and foundational texts that have shaped human thought, works that define our ideas of justice, truth, knowledge, and society.</p>
     </div>
   </div>
+
+  <!-- Featured Slideshow -->
+  <div style="padding: 60px 0; background: #E8E2D8; position: relative;">
+    <div style="max-width: 960px; margin: 0 auto; padding: 0 48px; position: relative;">
+
+      <div class="slide-wrapper">
+      <!-- Slide 1: Guest Speaker -->
+      <div class="featured-slide active" id="slide-0">
+        <span class="section-label">Featured</span>
+        <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.6rem; font-weight: 400; color: #2C2418; margin-bottom: 40px;">Guest Speakers</h2>
+        <div style="display: flex; gap: 40px; align-items: flex-start;">
+          <div style="flex-shrink: 0;">
+            <img src="images/behrends-headshot.jpg" alt="Professor Jeffery Behrends" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #E0D8CC;">
+          </div>
+          <div>
+            <h3 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.6rem; font-weight: 500; color: #2C2418; margin-bottom: 4px;">Professor Jeffery Behrends</h3>
+            <p style="font-size: 0.9rem; color: #B8976A; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px;">Director of Ethics, Harvard University</p>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #5C4F3D;">Professor Behrends joined ESP for a live conversation on AI ethics, exploring artificial consciousness, moral responsibility in technology, and the philosophical foundations of AI governance. His work at Harvard focuses on ethics and the intersection of philosophy with emerging technologies.</p>
+            <a href="interviews.html" class="btn" style="margin-top: 16px;">The Interview →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Testimonial -->
+      <div class="featured-slide" id="slide-1">
+        <span class="section-label">Testimonial</span>
+        <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.6rem; font-weight: 400; color: #2C2418; margin-bottom: 40px;">What Students Say</h2>
+        <div style="display: flex; gap: 40px; align-items: flex-start;">
+          <div style="flex-shrink: 0;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; background: #D4CCC0; border: 3px solid #E0D8CC; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#8A7E6B" stroke-width="1.5" width="48" height="48"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            </div>
+          </div>
+          <div style="max-width: 600px;">
+          <blockquote style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.4rem; font-style: italic; line-height: 1.9; color: #2C2418; border-left: 3px solid #B8976A; padding-left: 28px; margin: 0 0 24px 0;">
+            "Being a part of Eastside Philosophy genuinely surprised me, especially after seeing their presentation at the STEM fair. The way they broke down ideas and made them engaging was honestly impressive, and it didn't feel like just another student group. Being part of it has actually gotten me interested in philosophy, and I'd confidently say it's one of the most successful and impactful student organizations I've seen."
+          </blockquote>
+          <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; font-weight: 600; color: #2C2418; margin-bottom: 2px;">Kota Wilson</p>
+          <p style="font-size: 0.9rem; color: #B8976A; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;">Student, International School</p>
+          </div>
+        </div>
+      </div>
+
+      </div><!-- end slide-wrapper -->
+
+      <!-- Arrow Navigation -->
+      <button class="slide-arrow slide-arrow-left" onclick="switchSlide(-1)" aria-label="Previous">‹</button>
+      <button class="slide-arrow slide-arrow-right" onclick="switchSlide(1)" aria-label="Next">›</button>
+
+      <!-- Dots -->
+      <div class="slide-dots">
+        <span class="slide-dot active" onclick="goToSlide(0)"></span>
+        <span class="slide-dot" onclick="goToSlide(1)"></span>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .slide-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-slide {
+      width: 100%;
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      display: none;
+    }
+    .featured-slide.active {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: 2px solid #B8976A;
+      color: #B8976A;
+      font-size: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .slide-arrow:hover {
+      background: #B8976A;
+      color: #fff;
+    }
+    .slide-arrow-left { left: -12px; }
+    .slide-arrow-right { right: -12px; }
+    .slide-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 32px;
+    }
+    .slide-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #D4CCC0;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .slide-dot.active {
+      background: #B8976A;
+      transform: scale(1.2);
+    }
+    @media (max-width: 768px) {
+      .slide-arrow-left { left: 0; }
+      .slide-arrow-right { right: 0; }
+    }
+  </style>
+
+  <script>
+    var currentSlide = 0;
+    var totalSlides = 2;
+    var animating = false;
+
+    // Set wrapper to tallest slide height
+    (function() {
+      var wrapper = document.querySelector('.slide-wrapper');
+      if (!wrapper) return;
+      var slides = wrapper.querySelectorAll('.featured-slide');
+      var maxH = 0;
+      slides.forEach(function(s) {
+        s.style.display = 'block';
+        s.style.position = 'absolute';
+        s.style.opacity = '0';
+        var h = s.offsetHeight;
+        if (h > maxH) maxH = h;
+      });
+      wrapper.style.height = maxH + 'px';
+      slides.forEach(function(s, i) {
+        if (i === 0) {
+          s.style.position = '';
+          s.style.opacity = '';
+          s.style.display = 'block';
+          s.classList.add('active');
+        } else {
+          s.style.position = '';
+          s.style.opacity = '';
+          s.style.display = 'none';
+          s.classList.remove('active');
+        }
+      });
+      window.addEventListener('resize', function() {
+        var maxH = 0;
+        slides.forEach(function(s) {
+          s.style.display = 'block';
+          var prev = s.style.position;
+          s.style.position = 'absolute';
+          var h = s.offsetHeight;
+          if (h > maxH) maxH = h;
+          s.style.position = prev;
+          if (!s.classList.contains('active')) s.style.display = 'none';
+        });
+        wrapper.style.height = maxH + 'px';
+      });
+    })();
+
+    function switchSlide(dir) {
+      goToSlide((currentSlide + dir + totalSlides) % totalSlides, dir);
+    }
+
+    function goToSlide(index, dir) {
+      if (index === currentSlide || animating) return;
+      animating = true;
+      dir = dir || (index > currentSlide ? 1 : -1);
+
+      var slides = document.querySelectorAll('.featured-slide');
+      var dots = document.querySelectorAll('.slide-dot');
+      var outSlide = slides[currentSlide];
+      var inSlide = slides[index];
+
+      // Fade out current
+      outSlide.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+      outSlide.style.opacity = '0';
+      outSlide.style.transform = dir > 0 ? 'translateX(-30px)' : 'translateX(30px)';
+
+      dots[currentSlide].classList.remove('active');
+      dots[index].classList.add('active');
+
+      setTimeout(function() {
+        outSlide.classList.remove('active');
+        outSlide.style.display = 'none';
+        outSlide.style.transform = '';
+        outSlide.style.opacity = '';
+        outSlide.style.transition = '';
+
+        // Prep incoming
+        inSlide.style.transition = 'none';
+        inSlide.style.display = 'block';
+        inSlide.style.opacity = '0';
+        inSlide.style.transform = dir > 0 ? 'translateX(30px)' : 'translateX(-30px)';
+        inSlide.offsetHeight; // reflow
+
+        // Animate in
+        inSlide.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        inSlide.style.opacity = '1';
+        inSlide.style.transform = 'translateX(0)';
+        inSlide.classList.add('active');
+
+        setTimeout(function() {
+          inSlide.style.transition = '';
+          currentSlide = index;
+          animating = false;
+        }, 420);
+      }, 350);
+    }
+  </script>
 
   <!-- Footer -->
   <footer class="site-footer">

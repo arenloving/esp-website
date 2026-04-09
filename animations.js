@@ -1,5 +1,18 @@
 // Scroll-triggered animations
 document.addEventListener('DOMContentLoaded', function() {
+
+  // Nav transparency on scroll
+  var nav = document.querySelector('.site-nav');
+  if (nav) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 80) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  }
+
   // Auto-tag elements for animation
   const selectors = [
     '.section',

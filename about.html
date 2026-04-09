@@ -4,59 +4,103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us — Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=13">
+  <link rel="stylesheet" href="styles.css?v=34">
   <style>
     /* Bio Modal */
     .bio-overlay {
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(26, 26, 26, 0.6);
-      backdrop-filter: blur(6px);
+      background: rgba(26, 26, 26, 0);
+      backdrop-filter: blur(0px);
       z-index: 2000;
       justify-content: center;
       align-items: center;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
     }
-    .bio-overlay.active { display: flex; }
+    .bio-overlay.active {
+      background: rgba(26, 26, 26, 0.65);
+      backdrop-filter: blur(8px);
+    }
     .bio-modal {
       background: var(--cream);
       border: 1px solid var(--light-border);
-      max-width: 520px;
+      max-width: 600px;
       width: 90%;
-      padding: 40px;
+      padding: 48px;
       position: relative;
-      border-radius: 4px;
-      box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      transform: scale(0.85) translateY(30px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+    }
+    .bio-overlay.active .bio-modal {
+      transform: scale(1) translateY(0);
+      opacity: 1;
     }
     .bio-modal .close-btn {
       position: absolute;
       top: 16px; right: 20px;
       background: none; border: none;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
       color: var(--warm-gray);
       font-family: var(--serif);
+      transition: transform 0.2s ease, color 0.2s ease;
     }
-    .bio-modal .close-btn:hover { color: var(--dark-brown); }
+    .bio-modal .close-btn:hover {
+      color: var(--dark-brown);
+      transform: rotate(90deg);
+    }
     .bio-modal h3 {
       font-family: var(--serif);
-      font-size: 1.5rem;
+      font-size: 2rem;
       margin-bottom: 4px;
     }
     .bio-modal .bio-role {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--accent-gold);
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .bio-modal p {
-      font-size: 0.95rem;
-      line-height: 1.8;
+      font-size: 1.05rem;
+      line-height: 1.85;
     }
-    .team-card { cursor: pointer; transition: transform 0.2s ease; }
-    .team-card:hover { transform: translateY(-3px); }
+
+    /* Team card hover effects */
+    .team-card {
+      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    .team-card:hover .team-avatar {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 4px rgba(184, 151, 106, 0.25);
+    }
+    .team-card:hover h3 {
+      color: var(--accent-gold);
+    }
+
+    .team-avatar {
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .team-card:hover .team-avatar {
+      transform: scale(1.08);
+    }
+
+    .team-card h3 {
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    .team-card:hover h3 {
+      transform: scale(1.05);
+    }
 
     .team-avatar img {
       width: 100%;
@@ -71,7 +115,7 @@
 
   <!-- Navigation -->
   <nav class="site-nav">
-    <a href="index.html" class="nav-logo">Eastside Philosophy</a>
+    <a href="index.html" class="nav-logo"><img src="images/owl.png?v=2" alt="ESP" class="nav-logo-img">Eastside Philosophy</a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -126,7 +170,15 @@
             <img src="images/lucas.jpg" alt="Lucas Ma">
           </div>
           <h3>Lucas Ma</h3>
-          <p class="role">Member</p>
+          <p class="role">Representative</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('gregoire')">
+          <div class="team-avatar">
+            <img src="images/gregoire.jpg" alt="Gregoire Keene">
+          </div>
+          <h3>Gregoire Keene</h3>
+          <p class="role">Representative</p>
         </div>
 
       </div>
@@ -217,9 +269,14 @@
         role: 'Secretary',
         bio: "Hennry's main interests lie in theology, particularly systematic theology, with a focus on the study of the Christian religion, its history, and its traditions. He is also interested in physics, especially in areas such as mechanics and fluid dynamics. In addition to his academic pursuits, he studies music theory and is actively involved in jazz band, where he plays the piano. He loves to play the piano competitively, with a focus on Russian repertoire and modern pieces."
       },
+      gregoire: {
+        name: 'Gregoire Keene',
+        role: 'Representative',
+        bio: 'Greg focuses on theology and psychology, particularly in exploring questions of morality and the nature of the human condition. He is also interested in the applied sciences, including chemistry, and engages in it through activities such as the Chemistry Olympiad. On his spare time, he enjoys reading, writing, and playing soccer.'
+      },
       lucas: {
         name: 'Lucas Ma',
-        role: 'Member',
+        role: 'Representative',
         bio: "Philosophy and literature has been a longtime passion of Lucas Ma. Since he picked up an Orwellian novel in the 5th grade, he became adamant about learning the ropes of ethics and metaphysics. His ability is best reflected in his presentation and oratory skills. He currently serves as the President of Beaver Development Society, as well as a concurrent tenure scaling a stealth mode startup. He also enjoys debate, competitive shotgun shooting, and trading."
       },
       jason: {
@@ -238,12 +295,24 @@
       document.getElementById('bioName').textContent = data.name;
       document.getElementById('bioRole').textContent = data.role;
       document.getElementById('bioText').textContent = data.bio;
-      document.getElementById('bioOverlay').classList.add('active');
+      var overlay = document.getElementById('bioOverlay');
+      overlay.style.display = 'flex';
+      // Trigger reflow so transition fires
+      overlay.offsetHeight;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeBio(e) {
       if (!e || e.target === document.getElementById('bioOverlay')) {
-        document.getElementById('bioOverlay').classList.remove('active');
+        var overlay = document.getElementById('bioOverlay');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(function() {
+          if (!overlay.classList.contains('active')) {
+            overlay.style.display = 'none';
+          }
+        }, 400);
       }
     }
 
@@ -253,5 +322,21 @@
   </script>
 
   <script src="animations.js"></script>
+  <script>
+    // Override: make team cards visible immediately with a simple staggered fade
+    document.addEventListener('DOMContentLoaded', function() {
+      var cards = document.querySelectorAll('.team-card');
+      cards.forEach(function(card, i) {
+        card.classList.remove('animate-on-scroll');
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease ' + (i * 0.12) + 's, transform 0.5s ease ' + (i * 0.12) + 's';
+        setTimeout(function() {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100);
+      });
+    });
+  </script>
 </body>
 </html>

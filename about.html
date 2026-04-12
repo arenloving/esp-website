@@ -9,68 +9,108 @@
   <title>About Us — Eastside Philosophy</title>
   <link rel="stylesheet" href="styles.css?v=62">
   <style>
-    /* Bio Popover */
-    .bio-popover {
+    /* Bio Side Drawer */
+    .bio-backdrop {
       display: none;
       position: fixed;
+      inset: 0;
+      background: rgba(26, 22, 16, 0);
+      z-index: 1999;
+      transition: background 0.35s ease;
+    }
+    .bio-backdrop.active {
+      background: rgba(26, 22, 16, 0.45);
+    }
+    .bio-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 420px;
+      max-width: 92vw;
+      background: var(--ivory);
+      border-left: 1px solid var(--light-border);
+      box-shadow: -12px 0 48px rgba(0,0,0,0.15);
       z-index: 2000;
-      width: 320px;
-      background: var(--cream);
-      border: 1px solid var(--light-border);
-      border-radius: 10px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
-      padding: 24px;
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      pointer-events: none;
+      padding: 56px 44px 48px;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
     }
-    .bio-popover.active {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
+    .bio-drawer.active {
+      transform: translateX(0);
     }
-    /* Arrow pointing down toward the card */
-    .bio-popover::after {
-      content: '';
+    .bio-drawer .drawer-close {
       position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 14px;
-      height: 14px;
-      background: var(--cream);
-      border-right: 1px solid var(--light-border);
-      border-bottom: 1px solid var(--light-border);
-      transform: translateX(-50%) rotate(45deg);
-    }
-    .bio-popover .pop-close {
-      position: absolute;
-      top: 10px; right: 14px;
+      top: 20px; right: 24px;
       background: none; border: none;
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       cursor: pointer;
       color: var(--warm-gray);
-      line-height: 1;
-    }
-    .bio-popover .pop-close:hover { color: var(--dark-brown); }
-    .bio-popover h3 {
       font-family: var(--serif);
-      font-size: 1.3rem;
-      margin-bottom: 2px;
-      padding-right: 20px;
+      line-height: 1;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
-    .bio-popover .pop-role {
-      font-size: 0.75rem;
+    .bio-drawer .drawer-close:hover {
+      color: var(--dark-brown);
+      transform: rotate(90deg);
+    }
+    .bio-drawer .drawer-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--light-border);
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+    .bio-drawer .drawer-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+    }
+    .bio-drawer .drawer-avatar-placeholder {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--light-border);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .bio-drawer .drawer-avatar-placeholder svg {
+      width: 40px; height: 40px; opacity: 0.3;
+    }
+    .bio-drawer h3 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: var(--dark-brown);
+    }
+    .bio-drawer .drawer-role {
+      font-size: 0.78rem;
       color: var(--accent-gold);
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 28px;
     }
-    .bio-popover p {
-      font-size: 0.88rem;
-      line-height: 1.75;
+    .bio-drawer .drawer-divider {
+      width: 40px;
+      height: 1.5px;
+      background: var(--accent-gold);
+      margin-bottom: 24px;
+      opacity: 0.6;
+    }
+    .bio-drawer p {
+      font-size: 1rem;
+      line-height: 1.9;
       color: var(--muted-brown);
       margin: 0;
     }
@@ -287,11 +327,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </div>
 
-  <!-- Bio Popover -->
-  <div class="bio-popover" id="bioPopover">
-    <button class="pop-close" onclick="closeBio()">&times;</button>
+  <!-- Bio Side Drawer -->
+  <div class="bio-backdrop" id="bioBackdrop" onclick="closeBio()"></div>
+  <div class="bio-drawer" id="bioDrawer">
+    <button class="drawer-close" onclick="closeBio()">&times;</button>
+    <div id="bioAvatarWrap"></div>
     <h3 id="bioName"></h3>
-    <div class="pop-role" id="bioRole"></div>
+    <div class="drawer-role" id="bioRole"></div>
+    <div class="drawer-divider"></div>
     <p id="bioText"></p>
   </div>
 
@@ -336,7 +379,15 @@ document.addEventListener('DOMContentLoaded', function() {
       sophia: { name: 'Sophia Elkhamri', role: 'Member — Bush School Team', bio: 'No bio available yet.' }
     };
 
-    var activeCard = null;
+    // Avatar image map (key → src)
+    var avatarMap = {
+      aren:     'images/aren.jpg',
+      jeffery:  'images/jeffery.jpg',
+      hennry:   'images/hennry.jpg',
+      lucas:    'images/lucas.jpg',
+      gregoire: 'images/gregoire.jpg',
+      jason:    'images/jason.jpg'
+    };
 
     function openBio(key, cardEl) {
       const data = bios[key];
@@ -346,40 +397,32 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('bioRole').textContent = data.role;
       document.getElementById('bioText').textContent = data.bio;
 
-      var pop = document.getElementById('bioPopover');
-      pop.style.display = 'block';
+      // Avatar
+      var avatarWrap = document.getElementById('bioAvatarWrap');
+      if (avatarMap[key]) {
+        avatarWrap.innerHTML = '<div class="drawer-avatar"><img src="' + avatarMap[key] + '" alt="' + data.name + '"></div>';
+      } else {
+        avatarWrap.innerHTML = '<div class="drawer-avatar-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></div>';
+      }
 
-      // Position above the clicked card (fixed = viewport coords)
-      var rect = cardEl.getBoundingClientRect();
-      var popW = 320;
+      var backdrop = document.getElementById('bioBackdrop');
+      var drawer = document.getElementById('bioDrawer');
 
-      var left = rect.left + rect.width / 2 - popW / 2;
-      left = Math.max(12, Math.min(left, window.innerWidth - popW - 12));
-
-      pop.style.width = popW + 'px';
-      pop.style.left = left + 'px';
-      pop.style.top = '0px'; // measure height
-      pop.style.top = (rect.top - pop.offsetHeight - 16) + 'px';
-
-      pop.offsetHeight; // reflow
-      pop.classList.add('active');
-      activeCard = cardEl;
+      backdrop.style.display = 'block';
+      backdrop.offsetHeight;
+      backdrop.classList.add('active');
+      drawer.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeBio() {
-      var pop = document.getElementById('bioPopover');
-      pop.classList.remove('active');
-      setTimeout(function() { pop.style.display = 'none'; }, 200);
-      activeCard = null;
+      var backdrop = document.getElementById('bioBackdrop');
+      var drawer = document.getElementById('bioDrawer');
+      backdrop.classList.remove('active');
+      drawer.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(function() { backdrop.style.display = 'none'; }, 380);
     }
-
-    // Close on outside click
-    document.addEventListener('click', function(e) {
-      var pop = document.getElementById('bioPopover');
-      if (!pop.contains(e.target) && !e.target.closest('.team-card')) {
-        if (pop.classList.contains('active')) closeBio();
-      }
-    });
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeBio();

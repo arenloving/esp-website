@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us — Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=45">
+  <link rel="stylesheet" href="styles.css?v=62">
   <style>
     /* Bio Modal */
     .bio-overlay {
@@ -74,32 +77,9 @@
     /* Team card hover effects */
     .team-card {
       cursor: pointer;
-      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
     }
     .team-card:hover {
-      transform: translateY(-8px) scale(1.03);
       box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-    }
-    .team-card:hover .team-avatar {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 0 4px rgba(184, 151, 106, 0.25);
-    }
-    .team-card:hover h3 {
-      color: var(--accent-gold);
-    }
-
-    .team-avatar {
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    }
-    .team-card:hover .team-avatar {
-      transform: scale(1.08);
-    }
-
-    .team-card h3 {
-      transition: color 0.3s ease, transform 0.2s ease;
-    }
-    .team-card:hover h3 {
-      transform: scale(1.05);
     }
 
     .team-avatar img {
@@ -112,10 +92,29 @@
   </style>
 </head>
 <body>
+<script>
+// Force all content visible immediately - no animations
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+    el.classList.remove('animate-on-scroll');
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+  document.querySelectorAll('.section, .lecture-card, .team-card, .resource-item, .event-card, .forum-placeholder').forEach(function(el) {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.transition = 'none';
+  });
+  // Kill transitions on team card child elements too
+  document.querySelectorAll('.team-avatar, .team-card h3').forEach(function(el) {
+    el.style.transition = 'none';
+  });
+});
+</script>
 
   <!-- Navigation -->
   <nav class="site-nav">
-    <a href="index.html" class="nav-logo"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</a>
+    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</span>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -125,7 +124,7 @@
       <li><a href="interviews.html">Interviews</a></li>
       <li><a href="forum.html">Forum</a></li>
       <li><a href="resources.html">Resource Library</a></li>
-      <li><a href="about.html" class="active">About Us</a></li>
+      <li class="nav-dropdown"><a href="about.html" class="active">About</a><ul class="dropdown-menu"><li><a href="about.html">About Us</a></li><li><a href="join.html">Get Involved</a></li></ul></li>
     </ul>
   </nav>
 
@@ -224,15 +223,15 @@
           <p class="role">Member</p>
         </div>
 
-        <div class="team-card" onclick="openBio('tbd3')">
+        <div class="team-card" onclick="openBio('sophia')">
           <div class="team-avatar">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="12" cy="8" r="4"/>
               <path d="M20 21a8 8 0 1 0-16 0"/>
             </svg>
           </div>
-          <h3>TBD</h3>
-          <p class="role">To be announced</p>
+          <h3>Sophia Elkhamri</h3>
+          <p class="role">Member</p>
         </div>
 
       </div>
@@ -259,7 +258,7 @@
       aren: {
         name: 'Aren Loving',
         role: 'President',
-        bio: 'Aren\'s interests lie in the philosophy of free will and the role of reason and empirical evidence in shaping our understanding of the world. He founded ESP with Jeffery as he believes that philosophy has become an incredibly important subject to study in recent years, and he aims to cultivate interest in philosophy as a way of developing the reasoning and judgment necessary to navigate the world. In addition, he is a Life Scout in Troop 430 in Medina, Washington, and plays competitive baseball. In his free time, he enjoys shooting shotguns and camping.'
+        bio: 'He founded ESP with Jeffery as he believes that philosophy has become an incredibly important subject to study in recent years, and he aims to cultivate interest in philosophy as a way of developing the reasoning and judgment necessary to navigate the world. His philosophical interests center on free will, the limits of human knowledge, and the role of reason and experience in shaping belief. In addition, he is a Life Scout in Troop 430 in Medina, Washington, and plays competitive baseball. In his free time, he enjoys shooting shotguns and camping.'
       },
       jeffery: {
         name: 'Jeffery Lou',
@@ -288,7 +287,7 @@
       },
       vivian: { name: 'Vivian Cayetano', role: 'Member — Bush School Team', bio: 'No bio available yet.' },
       max: { name: 'Max Nichols', role: 'Member — Bush School Team', bio: 'No bio available yet.' },
-      tbd3: { name: 'TBD', role: 'To be announced', bio: 'No bio available yet.' }
+      sophia: { name: 'Sophia Elkhamri', role: 'Member — Bush School Team', bio: 'No bio available yet.' }
     };
 
     function openBio(key) {
@@ -323,22 +322,6 @@
     });
   </script>
 
-  <script src="animations.js"></script>
-  <script>
-    // Override: make team cards visible immediately with a simple staggered fade
-    document.addEventListener('DOMContentLoaded', function() {
-      var cards = document.querySelectorAll('.team-card');
-      cards.forEach(function(card, i) {
-        card.classList.remove('animate-on-scroll');
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease ' + (i * 0.12) + 's, transform 0.5s ease ' + (i * 0.12) + 's';
-        setTimeout(function() {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, 100);
-      });
-    });
-  </script>
+  <script src="animations.js?v=11"></script>
 </body>
 </html>

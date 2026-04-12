@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Involved — Eastside Philosophy</title>
+  <link rel="stylesheet" href="styles.css?v=62">
+  <style>
+    .join-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 40px 60px;
+    }
+    .join-intro {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--muted-brown);
+      margin-bottom: 12px;
+    }
+    .join-email {
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--accent-gold);
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+    .join-email a {
+      color: var(--accent-gold);
+      border-bottom: 1.5px solid var(--accent-gold);
+      padding-bottom: 1px;
+    }
+    .join-email a:hover {
+      color: var(--dark-brown);
+      border-color: var(--dark-brown);
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted-brown);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--dark-brown);
+      background: var(--ivory);
+      border: 1.5px solid var(--light-border);
+      border-radius: 6px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px rgba(184, 151, 106, 0.15);
+    }
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    .form-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235C4F3D' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .form-submit {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--dark-brown);
+      border: 2px solid var(--dark-brown);
+      padding: 16px 40px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .form-submit:hover {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: #fff;
+    }
+    .form-note {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    /* Chapter info box */
+    .chapter-info {
+      background: var(--ivory);
+      border: 1.5px solid var(--light-border);
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 40px;
+      display: none;
+    }
+    .chapter-info.visible {
+      display: block;
+    }
+    .chapter-info h4 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--dark-brown);
+      margin-bottom: 12px;
+    }
+    .chapter-info p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted-brown);
+      margin-bottom: 8px;
+    }
+    .chapter-info ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+    .chapter-info ul li {
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: var(--muted-brown);
+      line-height: 1.6;
+    }
+    .chapter-info ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+<script>
+// Force all content visible immediately - no animations
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+    el.classList.remove('animate-on-scroll');
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+  document.querySelectorAll('.section, .lecture-card, .team-card, .resource-item, .event-card, .forum-placeholder').forEach(function(el) {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.transition = 'none';
+  });
+});
+</script>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</span>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lectures.html">Lectures</a></li>
+      <li><a href="interviews.html">Interviews</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="resources.html">Resource Library</a></li>
+      <li class="nav-dropdown"><a href="about.html">About</a><ul class="dropdown-menu"><li><a href="about.html">About Us</a></li><li><a href="join.html" class="active">Get Involved</a></li></ul></li>
+    </ul>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Get Involved</h1>
+  </div>
+
+  <div class="join-container">
+    <p class="join-intro">Whether you want to start a chapter at your school, join an existing one, partner with us, or just learn more about what we do, we'd love to hear from you.</p>
+    <p class="join-email"><a href="mailto:eastsidephilosophy@gmail.com">eastsidephilosophy@gmail.com</a></p>
+
+    <form action="https://formsubmit.co/eastsidephilosophy@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New ESP Inquiry">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_cc" value="arenloving@gmail.com">
+
+      <div class="form-group">
+        <label>I want to...</label>
+        <select name="interest" required id="interestSelect" onchange="toggleChapterInfo(this.value)">
+          <option value="" disabled selected>Select an option</option>
+          <option value="Start a chapter at my school">Start a chapter at my school</option>
+          <option value="Join an existing chapter">Join an existing chapter</option>
+          <option value="Partner with ESP">Partner with ESP</option>
+          <option value="General inquiry">General inquiry</option>
+        </select>
+      </div>
+
+      <!-- Chapter info that appears when "Start a chapter" is selected -->
+      <div class="chapter-info" id="chapterInfo">
+        <h4>What starting a chapter looks like</h4>
+        <p>We provide everything you need to bring philosophy to your school:</p>
+        <ul>
+          <li>Ready-to-use presentations, toolkits, and discussion guides</li>
+          <li>The ESP brand, logo, and listing on our website</li>
+          <li>A Chapter Starter Guide with step-by-step instructions</li>
+          <li>Ongoing support from the ESP executive team</li>
+        </ul>
+        <p>All you need is 3-5 interested students and a faculty advisor. We'll handle the rest.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="name" required placeholder="Your full name">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="your@email.com">
+      </div>
+
+      <div class="form-group">
+        <label>School (if applicable)</label>
+        <input type="text" name="school" placeholder="Your school name and city">
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea name="message" placeholder="Tell us about yourself, your interest in philosophy, or how you'd like to get involved..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Submit</button>
+      <p class="form-note">We'll get back to you as soon as we can.</p>
+    </form>
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
+  </footer>
+
+  <script src="animations.js?v=11"></script>
+  <script>
+    function toggleChapterInfo(val) {
+      var info = document.getElementById('chapterInfo');
+      if (val === 'Start a chapter at my school') {
+        info.classList.add('visible');
+      } else {
+        info.classList.remove('visible');
+      }
+    }
+  </script>
+</body>
+</html>

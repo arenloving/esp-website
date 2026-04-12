@@ -83,10 +83,17 @@
     }
 
     /* Spinning ring on avatar hover */
-    .team-avatar {
+    /* Wrapper sits outside the clipped .team-avatar */
+    .team-avatar-wrap {
       position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .team-avatar::before {
+    .team-avatar-wrap::before {
       content: '';
       position: absolute;
       inset: -5px;
@@ -95,17 +102,21 @@
       border-top-color: var(--accent-gold);
       border-right-color: var(--accent-gold);
       opacity: 0;
-      transition: opacity 0.25s ease;
+      pointer-events: none;
     }
-    .team-card:hover .team-avatar::before {
+    .team-card:hover .team-avatar-wrap::before {
       opacity: 1;
-      animation: ring-spin 0.8s linear infinite;
+      animation: ring-spin 0.75s linear infinite;
     }
     @keyframes ring-spin {
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
 
+    /* Reset margin on avatar since wrapper handles spacing */
+    .team-avatar {
+      margin: 0;
+    }
     .team-avatar img {
       width: 100%;
       height: 100%;
@@ -129,8 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
     el.style.transform = 'none';
     el.style.transition = 'none';
   });
-  // Kill transitions on team card child elements too
-  document.querySelectorAll('.team-avatar, .team-card h3').forEach(function(el) {
+  // Kill transitions on team card child elements (not the wrap — that needs animation)
+  document.querySelectorAll('.team-card h3').forEach(function(el) {
     el.style.transition = 'none';
   });
 });
@@ -170,40 +181,50 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="team-grid">
 
         <div class="team-card" onclick="openBio('aren')">
-          <div class="team-avatar">
-            <img src="images/aren.jpg" alt="Aren Loving">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar">
+              <img src="images/aren.jpg" alt="Aren Loving">
+            </div>
           </div>
           <h3>Aren Loving</h3>
           <p class="role">President</p>
         </div>
 
         <div class="team-card" onclick="openBio('jeffery')">
-          <div class="team-avatar">
-            <img src="images/jeffery.jpg" alt="Jeffery Lou">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar">
+              <img src="images/jeffery.jpg" alt="Jeffery Lou">
+            </div>
           </div>
           <h3>Jeffery Lou</h3>
           <p class="role">Vice President</p>
         </div>
 
         <div class="team-card" onclick="openBio('hennry')">
-          <div class="team-avatar">
-            <img src="images/hennry.jpg" alt="Hennry Lou">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar">
+              <img src="images/hennry.jpg" alt="Hennry Lou">
+            </div>
           </div>
           <h3>Hennry Lou</h3>
           <p class="role">Secretary</p>
         </div>
 
         <div class="team-card" onclick="openBio('lucas')">
-          <div class="team-avatar">
-            <img src="images/lucas.jpg" alt="Lucas Ma">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar">
+              <img src="images/lucas.jpg" alt="Lucas Ma">
+            </div>
           </div>
           <h3>Lucas Ma</h3>
           <p class="role">Representative</p>
         </div>
 
         <div class="team-card" onclick="openBio('gregoire')">
-          <div class="team-avatar">
-            <img src="images/gregoire.jpg" alt="Gregoire Keene">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar">
+              <img src="images/gregoire.jpg" alt="Gregoire Keene">
+            </div>
           </div>
           <h3>Gregoire Keene</h3>
           <p class="role">Representative</p>
@@ -218,41 +239,49 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="team-grid">
 
         <div class="team-card" onclick="openBio('jason')">
-          <div class="team-avatar">
-            <img src="images/jason.jpg" alt="Jason Cheng">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar">
+              <img src="images/jason.jpg" alt="Jason Cheng">
+            </div>
           </div>
           <h3>Jason Cheng</h3>
           <p class="role">President</p>
         </div>
 
         <div class="team-card" onclick="openBio('vivian')">
-          <div class="team-avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M20 21a8 8 0 1 0-16 0"/>
-            </svg>
+          <div class="team-avatar-wrap">
+            <div class="team-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M20 21a8 8 0 1 0-16 0"/>
+              </svg>
+            </div>
           </div>
           <h3>Vivian Cayetano</h3>
           <p class="role">Member</p>
         </div>
 
         <div class="team-card" onclick="openBio('max')">
-          <div class="team-avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M20 21a8 8 0 1 0-16 0"/>
-            </svg>
+          <div class="team-avatar-wrap">
+            <div class="team-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M20 21a8 8 0 1 0-16 0"/>
+              </svg>
+            </div>
           </div>
           <h3>Max Nichols</h3>
           <p class="role">Member</p>
         </div>
 
         <div class="team-card" onclick="openBio('sophia')">
-          <div class="team-avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M20 21a8 8 0 1 0-16 0"/>
-            </svg>
+          <div class="team-avatar-wrap">
+            <div class="team-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M20 21a8 8 0 1 0-16 0"/>
+              </svg>
+            </div>
           </div>
           <h3>Sophia Elkhamri</h3>
           <p class="role">Member</p>

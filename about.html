@@ -98,19 +98,13 @@
       position: absolute;
       inset: -5px;
       border-radius: 50%;
-      border: 2.5px solid transparent;
-      border-top-color: var(--accent-gold);
-      border-right-color: var(--accent-gold);
+      border: 2.5px solid var(--accent-gold);
       opacity: 0;
+      transition: opacity 0.25s ease;
       pointer-events: none;
     }
     .team-card:hover .team-avatar-wrap::before {
       opacity: 1;
-      animation: ring-spin 0.75s linear infinite;
-    }
-    @keyframes ring-spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
     }
 
     /* Reset margin on avatar since wrapper handles spacing */

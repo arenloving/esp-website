@@ -655,6 +655,12 @@ p {
   border: 1px solid var(--light-border);
   border-radius: 4px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.resource-item .btn {
+  margin-top: auto;
+  align-self: center;
 }
 
 .resource-item:hover {

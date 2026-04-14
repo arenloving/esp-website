@@ -9,10 +9,9 @@
   <title>Resource Library — Eastside Philosophy</title>
   <link rel="stylesheet" href="styles.css?v=62">
   <style>
-    /* Compact clickable resource cards */
     .resource-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 16px;
     }
 
@@ -20,42 +19,64 @@
       background: var(--ivory);
       border: 1px solid var(--light-border);
       border-radius: 6px;
-      padding: 18px 20px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .res-card:hover {
-      border-color: var(--accent-gold);
+      padding: 18px 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .res-card-type {
       font-family: var(--sans);
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 1.8px;
       text-transform: uppercase;
       color: var(--accent-gold);
-      margin-bottom: 6px;
+      margin: 0;
     }
 
     .res-card-title {
       font-family: var(--serif);
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 500;
       color: var(--dark-brown);
       line-height: 1.3;
       margin: 0;
+      flex-grow: 1;
     }
 
-    .res-card-chevron {
-      float: right;
-      font-size: 0.8rem;
+    .res-card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      gap: 8px;
+    }
+
+    .res-card-actions .btn {
+      font-size: 0.68rem;
+      padding: 8px 14px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .res-details-btn {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
       color: var(--warm-gray);
-      margin-top: 2px;
-      transition: transform 0.25s ease;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      white-space: nowrap;
     }
+    .res-details-btn:hover { color: var(--dark-brown); }
 
-    /* Drawer overlay */
+    /* Side drawer */
     .res-backdrop {
       display: none;
       position: fixed;
@@ -104,7 +125,6 @@
       color: var(--accent-gold);
       margin-bottom: 10px;
     }
-
     .res-drawer h2 {
       font-family: var(--serif);
       font-size: 1.9rem;
@@ -113,26 +133,19 @@
       margin-bottom: 20px;
       line-height: 1.25;
     }
-
     .res-drawer-divider {
-      width: 40px;
-      height: 1.5px;
+      width: 40px; height: 1.5px;
       background: var(--accent-gold);
       opacity: 0.6;
       margin-bottom: 20px;
     }
-
     .res-drawer p {
       font-size: 1rem;
       line-height: 1.85;
       color: var(--muted-brown);
       margin-bottom: 28px;
     }
-
-    .res-drawer .btn {
-      display: block;
-      text-align: center;
-    }
+    .res-drawer .btn { display: block; text-align: center; }
   </style>
 </head>
 <body>
@@ -140,86 +153,33 @@
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
     el.classList.remove('animate-on-scroll');
-    el.style.opacity = '1';
-    el.style.transform = 'none';
+    el.style.opacity = '1'; el.style.transform = 'none';
   });
   document.querySelectorAll('.section, .lecture-card, .team-card, .event-card, .forum-placeholder').forEach(function(el) {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-    el.style.transition = 'none';
+    el.style.opacity = '1'; el.style.transform = 'none'; el.style.transition = 'none';
   });
 });
 
 var resources = [
-  {
-    type: 'Interview Presentation — November 13, 2026',
-    title: 'AI Ethics with Professor Jeff Behrends',
-    desc: 'A conversation on AI ethics with the Director of Ethics at Harvard University. Covers the realism vs. anti-realism debate in ethics, the moral duty of "due consideration" in black-box AI, whether ethics for humans and AI are fundamentally different, and whether ethical constraints should be built in from the start or added later. Slides from the ESP Live interview session.',
-    file: 'Behrends-AI-Ethics.pptx',
-    btnLabel: 'Download Presentation →'
-  },
-  {
-    type: 'Guest Lecture — March 16, 2026',
-    title: 'Intro to Albert Camus',
-    desc: 'Guest lecture delivered to French Literature at the International School. Covers Camus\' life and biography, the concept of the Absurd, key works including The Stranger, The Plague, and The Myth of Sisyphus, and the distinction between absurdism and nihilism.',
-    file: 'Albert-Camus.pptx',
-    btnLabel: 'Download Presentation →'
-  },
-  {
-    type: 'Presentation — September 18, 2025',
-    title: 'C.G. Jung: The Architecture of the Unconscious',
-    desc: 'An in-depth exploration of Carl Jung\'s analytical psychology. Covers the collective unconscious, archetypes (the Shadow, Persona, Self, Hero), the process of individuation, synchronicity, Jung\'s engagement with religion, and his relationship to Nietzsche. Presented by Eastside Philosophy.',
-    file: 'Philosophy-Club-Sept-2025.pptx',
-    btnLabel: 'Download Presentation →'
-  },
-  {
-    type: 'Presentation — June 2025',
-    title: 'Moral Implications of Synthetic Intelligence',
-    desc: 'Explores artificial consciousness, personhood, and existential risk through the lens of philosophy. Covers the Turing Test, Roko\'s Basilisk, Searle\'s Chinese Room, Nagel\'s subjectivity problem, and the moral frameworks of Kant and Singer applied to synthetic beings. Presented at the International School STEM Fair.',
-    file: 'Implications-of-Development-of-AGI.pptx',
-    btnLabel: 'Download Presentation →'
-  },
-  {
-    type: 'Presentation — October 2024',
-    title: 'Confucius (孔夫子): Ethics, Ritual, and the Moral Life',
-    desc: 'An introduction to Confucius and the core ideals of Confucian philosophy. Covers Rén (仁) — benevolence and humanity; Lǐ (禮) — ritual and social harmony; Xiào (孝) — filial piety and respect for elders; and Yì (義) — righteousness and moral integrity. Presented by the Philosophy Club at the International School.',
-    file: 'Philosophy-Club-Oct-2024.pptx',
-    btnLabel: 'Download Presentation →'
-  },
-  {
-    type: 'Presentation — September 2024',
-    title: 'Alan Watts: Philosophy, Zen, and the Art of Being',
-    desc: 'Brief presentation on Alan Watts — the English philosopher who brought Eastern philosophy to the Western world. Covers his life and ideas on consciousness, the self, the nature of time, and the relationship between Zen Buddhism and Western thought. Explores the Backwards Law: the idea that pursuing something directly often pushes it further away.',
-    file: 'Philosophy-Club-Sept-2024.pptx',
-    btnLabel: 'Download Presentation →'
-  },
-  {
-    type: 'Presentation — Philosophy Club, International School',
-    title: 'Democracy',
-    desc: 'A breakdown of democratic principles from ancient Athens to modern governance. Covers popular sovereignty, political equality, accountability, effectiveness, and includes a corruption index comparison across democratic states.',
-    file: 'Political-Philosophy.pptx',
-    btnLabel: 'Download Presentation →'
-  }
+  { type: 'Interview Presentation — November 2026', title: 'AI Ethics with Professor Jeff Behrends', desc: 'A conversation on AI ethics with the Director of Ethics at Harvard University. Covers the realism vs. anti-realism debate in ethics, the moral duty of "due consideration" in black-box AI, whether ethics for humans and AI are fundamentally different, and whether ethical constraints should be built in from the start or added later.', file: 'Behrends-AI-Ethics.pptx', btn: 'Download →' },
+  { type: 'Guest Lecture — March 2026', title: 'Intro to Albert Camus', desc: 'Guest lecture delivered to French Literature at the International School. Covers Camus\' life, the concept of the Absurd, key works including The Stranger, The Plague, and The Myth of Sisyphus, and the distinction between absurdism and nihilism.', file: 'Albert-Camus.pptx', btn: 'Download →' },
+  { type: 'Presentation — September 18, 2025', title: 'C.G. Jung: The Architecture of the Unconscious', desc: 'An in-depth exploration of Carl Jung\'s analytical psychology. Covers the collective unconscious, archetypes (the Shadow, Persona, Self, Hero), individuation, synchronicity, Jung\'s engagement with religion, and his relationship to Nietzsche. Presented by Eastside Philosophy.', file: 'Philosophy-Club-Sept-2025.pptx', btn: 'Download →' },
+  { type: 'Presentation — June 2025', title: 'Moral Implications of Synthetic Intelligence', desc: 'Explores artificial consciousness, personhood, and existential risk. Covers the Turing Test, Roko\'s Basilisk, Searle\'s Chinese Room, Nagel\'s subjectivity problem, and the moral frameworks of Kant and Singer applied to synthetic beings. Presented at the International School STEM Fair.', file: 'Implications-of-Development-of-AGI.pptx', btn: 'Download →' },
+  { type: 'Presentation — October 2024', title: 'Confucius (孔夫子): Ethics, Ritual, and the Moral Life', desc: 'An introduction to Confucius and the core ideals of Confucian philosophy. Covers Rén (仁) — benevolence; Lǐ (禮) — ritual and social harmony; Xiào (孝) — filial piety; and Yì (義) — righteousness and moral integrity. Presented by the Philosophy Club at the International School.', file: 'Philosophy-Club-Oct-2024.pptx', btn: 'Download →' },
+  { type: 'Presentation — September 2024', title: 'Alan Watts: Philosophy, Zen, and the Art of Being', desc: 'Brief presentation on Alan Watts — the English philosopher who brought Eastern philosophy to the Western world. Covers his life, consciousness, the self, the nature of time, Zen Buddhism, and the Backwards Law.', file: 'Philosophy-Club-Sept-2024.pptx', btn: 'Download →' },
+  { type: 'Presentation — Philosophy Club, International School', title: 'Democracy', desc: 'A breakdown of democratic principles from ancient Athens to modern governance. Covers popular sovereignty, political equality, accountability, effectiveness, and a corruption index comparison across democratic states.', file: 'Political-Philosophy.pptx', btn: 'Download →' }
 ];
 
 var toolkits = [
-  {
-    type: 'Teacher Toolkit / Lesson Planner',
-    title: 'Introduction to Immanuel Kant',
-    desc: 'A comprehensive teaching resource covering Kant\'s life and historical context, the Critique of Pure Reason, his Copernican Revolution in philosophy, moral philosophy and the Categorical Imperative, aesthetics and the sublime, political philosophy and Perpetual Peace, and his lasting legacy. Includes discussion questions for classroom use.',
-    file: 'Immanuel-Kant.pptx',
-    btnLabel: 'Download Toolkit →'
-  }
+  { type: 'Teacher Toolkit / Lesson Planner', title: 'Introduction to Immanuel Kant', desc: 'A comprehensive teaching resource covering Kant\'s life, the Critique of Pure Reason, the Categorical Imperative, aesthetics and the sublime, political philosophy and Perpetual Peace, and his lasting legacy. Includes discussion questions for classroom use.', file: 'Immanuel-Kant.pptx', btn: 'Download Toolkit →' }
 ];
 
-function openDrawer(data) {
-  document.getElementById('drawerType').textContent = data.type;
-  document.getElementById('drawerTitle').textContent = data.title;
-  document.getElementById('drawerDesc').textContent = data.desc;
+function openDrawer(d) {
+  document.getElementById('drawerType').textContent = d.type;
+  document.getElementById('drawerTitle').textContent = d.title;
+  document.getElementById('drawerDesc').textContent = d.desc;
   var btn = document.getElementById('drawerBtn');
-  btn.textContent = data.btnLabel;
-  btn.href = data.file;
-
+  btn.textContent = d.btn; btn.href = d.file;
   var backdrop = document.getElementById('resBackdrop');
   var drawer = document.getElementById('resDrawer');
   backdrop.style.display = 'block';
@@ -233,20 +193,31 @@ function closeDrawer() {
   document.getElementById('resBackdrop').classList.remove('active');
   document.getElementById('resDrawer').classList.remove('active');
   document.body.style.overflow = '';
-  setTimeout(function() {
-    document.getElementById('resBackdrop').style.display = 'none';
-  }, 350);
+  setTimeout(function() { document.getElementById('resBackdrop').style.display = 'none'; }, 350);
 }
 
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+
+function renderCards(data, gridId) {
+  var grid = document.getElementById(gridId);
+  data.forEach(function(d) {
+    var card = document.createElement('div');
+    card.className = 'res-card';
+    card.innerHTML =
+      '<p class="res-card-type">' + d.type + '</p>' +
+      '<h3 class="res-card-title">' + d.title + '</h3>' +
+      '<div class="res-card-actions">' +
+        '<a href="' + d.file + '" class="btn" download>' + d.btn + '</a>' +
+        '<button class="res-details-btn" onclick="openDrawer(' + JSON.stringify(d).replace(/'/g,"&#39;") + ')">Details</button>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+}
 </script>
 
-  <!-- Navigation -->
   <nav class="site-nav">
     <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</span>
-    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="lectures.html">Lectures</a></li>
@@ -257,24 +228,20 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
     </ul>
   </nav>
 
-  <!-- Page Header -->
   <div class="page-header">
     <h1>Resource Library</h1>
     <p class="subtitle">Lessons, slides, and materials for independent learning</p>
   </div>
 
   <div class="page-container wide">
-
     <div class="section">
       <span class="section-label">Presentations</span>
       <div class="resource-grid" id="presGrid"></div>
     </div>
-
     <div class="section">
       <span class="section-label">Teacher Toolkits</span>
       <div class="resource-grid" id="toolkitGrid"></div>
     </div>
-
     <div class="section">
       <span class="section-label">Additional Resources</span>
       <div class="resource-grid">
@@ -290,7 +257,6 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
         </div>
       </div>
     </div>
-
   </div>
 
   <!-- Drawer -->
@@ -309,23 +275,9 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
   </footer>
 
   <script>
-  // Render cards
-  function renderCards(data, gridId) {
-    var grid = document.getElementById(gridId);
-    data.forEach(function(d) {
-      var card = document.createElement('div');
-      card.className = 'res-card';
-      card.innerHTML =
-        '<p class="res-card-type">' + d.type + '</p>' +
-        '<h3 class="res-card-title">' + d.title + ' <span style="float:right;font-size:0.75rem;color:var(--warm-gray);margin-top:3px;">↗</span></h3>';
-      card.onclick = function() { openDrawer(d); };
-      grid.appendChild(card);
-    });
-  }
-  renderCards(resources, 'presGrid');
-  renderCards(toolkits, 'toolkitGrid');
+    renderCards(resources, 'presGrid');
+    renderCards(toolkits, 'toolkitGrid');
   </script>
-
   <script src="animations.js?v=11"></script>
 </body>
 </html>

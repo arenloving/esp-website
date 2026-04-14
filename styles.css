@@ -651,16 +651,24 @@ p {
 
 .resource-item {
   background: var(--ivory);
-  padding: 28px;
+  padding: 20px;
   border: 1px solid var(--light-border);
   border-radius: 4px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.resource-item h3 {
+  text-align: center;
+}
+.resource-item p {
+  text-align: left;
 }
 .resource-item .btn {
   margin-top: auto;
-  align-self: center;
+  padding-top: 16px;
 }
 
 .resource-item:hover {

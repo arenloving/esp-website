@@ -23,6 +23,13 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .res-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      border-color: var(--accent-gold);
     }
 
     .res-card-type {
@@ -60,21 +67,7 @@
       white-space: nowrap;
     }
 
-    .res-details-btn {
-      font-family: var(--sans);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: var(--warm-gray);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      white-space: nowrap;
-    }
-    .res-details-btn:hover { color: var(--dark-brown); }
+
 
     /* Side drawer */
     .res-backdrop {
@@ -207,9 +200,9 @@ function renderCards(data, gridId) {
       '<p class="res-card-type">' + d.type + '</p>' +
       '<h3 class="res-card-title">' + d.title + '</h3>' +
       '<div class="res-card-actions">' +
-        '<a href="' + d.file + '" class="btn" download>' + d.btn + '</a>' +
-        '<button class="res-details-btn" onclick="openDrawer(' + JSON.stringify(d).replace(/'/g,"&#39;") + ')">Details</button>' +
+        '<a href="' + d.file + '" class="btn" download onclick="event.stopPropagation()">' + d.btn + '</a>' +
       '</div>';
+    card.onclick = function() { openDrawer(d); };
     grid.appendChild(card);
   });
 }

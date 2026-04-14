@@ -18,17 +18,17 @@
     .res-card {
       background: var(--ivory);
       border: 1px solid var(--light-border);
-      border-radius: 6px;
-      padding: 18px 18px 14px;
+      border-radius: 0;
+      padding: 20px 20px 16px;
       display: flex;
       flex-direction: column;
       gap: 8px;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
     .res-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.1);
       border-color: var(--accent-gold);
     }
 
@@ -69,47 +69,55 @@
 
 
 
-    /* Side drawer */
+    /* Centered modal */
     .res-backdrop {
       display: none;
       position: fixed;
       inset: 0;
       background: rgba(26,22,16,0);
+      backdrop-filter: blur(0px);
       z-index: 1999;
-      transition: background 0.3s ease;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
     }
-    .res-backdrop.active { background: rgba(26,22,16,0.4); }
-
-    .res-drawer {
-      position: fixed;
-      top: 0; right: 0;
-      height: 100%;
-      width: 460px;
-      max-width: 94vw;
-      background: var(--ivory);
-      border-left: 1px solid var(--light-border);
-      box-shadow: -10px 0 40px rgba(0,0,0,0.12);
-      z-index: 2000;
-      padding: 56px 44px 48px;
-      overflow-y: auto;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    .res-backdrop.active {
+      background: rgba(26,22,16,0.55);
+      backdrop-filter: blur(6px);
     }
-    .res-drawer.active { transform: translateX(0); }
 
-    .res-drawer-close {
+    .res-modal {
+      background: var(--cream);
+      border: 1px solid var(--light-border);
+      border-radius: 4px;
+      max-width: 580px;
+      width: 90%;
+      padding: 48px;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: scale(0.92) translateY(20px);
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .res-backdrop.active .res-modal {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .res-modal-close {
       position: absolute;
-      top: 20px; right: 24px;
+      top: 16px; right: 20px;
       background: none; border: none;
       font-size: 1.6rem;
       cursor: pointer;
       color: var(--warm-gray);
+      font-family: var(--serif);
       line-height: 1;
       transition: color 0.2s ease, transform 0.2s ease;
     }
-    .res-drawer-close:hover { color: var(--dark-brown); transform: rotate(90deg); }
+    .res-modal-close:hover { color: var(--dark-brown); transform: rotate(90deg); }
 
-    .res-drawer-type {
+    .res-modal-type {
       font-family: var(--sans);
       font-size: 0.72rem;
       font-weight: 600;
@@ -118,27 +126,27 @@
       color: var(--accent-gold);
       margin-bottom: 10px;
     }
-    .res-drawer h2 {
+    .res-modal h2 {
       font-family: var(--serif);
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       font-weight: 500;
       color: var(--dark-brown);
       margin-bottom: 20px;
       line-height: 1.25;
     }
-    .res-drawer-divider {
+    .res-modal-divider {
       width: 40px; height: 1.5px;
       background: var(--accent-gold);
       opacity: 0.6;
       margin-bottom: 20px;
     }
-    .res-drawer p {
+    .res-modal p {
       font-size: 1rem;
       line-height: 1.85;
       color: var(--muted-brown);
       margin-bottom: 28px;
     }
-    .res-drawer .btn { display: block; text-align: center; }
+    .res-modal .btn { display: block; text-align: center; }
   </style>
 </head>
 <body>
@@ -168,25 +176,23 @@ var toolkits = [
 ];
 
 function openDrawer(d) {
-  document.getElementById('drawerType').textContent = d.type;
-  document.getElementById('drawerTitle').textContent = d.title;
-  document.getElementById('drawerDesc').textContent = d.desc;
-  var btn = document.getElementById('drawerBtn');
+  document.getElementById('modalType').textContent = d.type;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalDesc').textContent = d.desc;
+  var btn = document.getElementById('modalBtn');
   btn.textContent = d.btn; btn.href = d.file;
   var backdrop = document.getElementById('resBackdrop');
-  var drawer = document.getElementById('resDrawer');
-  backdrop.style.display = 'block';
+  backdrop.style.display = 'flex';
   backdrop.offsetHeight;
   backdrop.classList.add('active');
-  drawer.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
 function closeDrawer() {
-  document.getElementById('resBackdrop').classList.remove('active');
-  document.getElementById('resDrawer').classList.remove('active');
+  var backdrop = document.getElementById('resBackdrop');
+  backdrop.classList.remove('active');
   document.body.style.overflow = '';
-  setTimeout(function() { document.getElementById('resBackdrop').style.display = 'none'; }, 350);
+  setTimeout(function() { backdrop.style.display = 'none'; }, 380);
 }
 
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
@@ -269,15 +275,16 @@ function renderCards(data, gridId) {
     </div>
   </div>
 
-  <!-- Drawer -->
-  <div class="res-backdrop" id="resBackdrop" onclick="closeDrawer()"></div>
-  <div class="res-drawer" id="resDrawer">
-    <button class="res-drawer-close" onclick="closeDrawer()">&times;</button>
-    <div class="res-drawer-type" id="drawerType"></div>
-    <h2 id="drawerTitle"></h2>
-    <div class="res-drawer-divider"></div>
-    <p id="drawerDesc"></p>
-    <a id="drawerBtn" class="btn" download>Download →</a>
+  <!-- Modal -->
+  <div class="res-backdrop" id="resBackdrop" onclick="closeDrawer()">
+    <div class="res-modal" onclick="event.stopPropagation()">
+      <button class="res-modal-close" onclick="closeDrawer()">&times;</button>
+      <div class="res-modal-type" id="modalType"></div>
+      <h2 id="modalTitle"></h2>
+      <div class="res-modal-divider"></div>
+      <p id="modalDesc"></p>
+      <a id="modalBtn" class="btn" download>Download →</a>
+    </div>
   </div>
 
   <footer class="site-footer">

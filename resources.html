@@ -165,7 +165,7 @@ var resources = [
   { type: 'Interview Presentation — November 2026', title: 'AI Ethics with Professor Jeff Behrends', desc: 'A conversation on AI ethics with the Director of Ethics at Harvard University. Covers the realism vs. anti-realism debate in ethics, the moral duty of "due consideration" in black-box AI, whether ethics for humans and AI are fundamentally different, and whether ethical constraints should be built in from the start or added later.', file: 'Behrends-AI-Ethics.pptx', btn: 'Download →' },
   { type: 'Guest Lecture — March 2026', title: 'Intro to Albert Camus', desc: 'Guest lecture delivered to French Literature at the International School. Covers Camus\' life, the concept of the Absurd, key works including The Stranger, The Plague, and The Myth of Sisyphus, and the distinction between absurdism and nihilism.', file: 'Albert-Camus.pptx', btn: 'Download →' },
   { type: 'Presentation — September 18, 2025', title: 'C.G. Jung: The Architecture of the Unconscious', desc: 'An in-depth exploration of Carl Jung\'s analytical psychology. Covers the collective unconscious, archetypes (the Shadow, Persona, Self, Hero), individuation, synchronicity, Jung\'s engagement with religion, and his relationship to Nietzsche. Presented by Eastside Philosophy.', file: 'Philosophy-Club-Sept-2025.pptx', btn: 'Download →' },
-  { type: 'Presentation — June 2025', title: 'Moral Implications of Synthetic Intelligence', desc: 'Explores artificial consciousness, personhood, and existential risk. Covers the Turing Test, Roko\'s Basilisk, Searle\'s Chinese Room, Nagel\'s subjectivity problem, and the moral frameworks of Kant and Singer applied to synthetic beings. Presented at the International School STEM Fair.', file: 'Implications-of-Development-of-AGI.pptx', btn: 'Download →' },
+  { type: 'STEM Fair Presentation — June 2025', title: 'Moral Implications of Synthetic Intelligence', desc: 'Explores artificial consciousness, personhood, and existential risk. Covers the Turing Test, Roko\'s Basilisk, Searle\'s Chinese Room, Nagel\'s subjectivity problem, and the moral frameworks of Kant and Singer applied to synthetic beings. Presented at the International School STEM Fair.', file: 'Implications-of-Development-of-AGI.pptx', btn: 'Download →', img: 'images/hal-9000-new.jpg' },
   { type: 'Presentation — October 2024', title: 'Confucius (孔夫子): Ethics, Ritual, and the Moral Life', desc: 'An introduction to Confucius and the core ideals of Confucian philosophy. Covers Rén (仁) — benevolence; Lǐ (禮) — ritual and social harmony; Xiào (孝) — filial piety; and Yì (義) — righteousness and moral integrity. Presented by the Philosophy Club at the International School.', file: 'Philosophy-Club-Oct-2024.pptx', btn: 'Download →' },
   { type: 'Presentation — September 2024', title: 'Alan Watts: Philosophy, Zen, and the Art of Being', desc: 'Brief presentation on Alan Watts — the English philosopher who brought Eastern philosophy to the Western world. Covers his life, consciousness, the self, the nature of time, Zen Buddhism, and the Backwards Law.', file: 'Philosophy-Club-Sept-2024.pptx', btn: 'Download →' },
   { type: 'Presentation — Philosophy Club, International School', title: 'Democracy', desc: 'A breakdown of democratic principles from ancient Athens to modern governance. Covers popular sovereignty, political equality, accountability, effectiveness, and a corruption index comparison across democratic states.', file: 'Political-Philosophy.pptx', btn: 'Download →' }
@@ -181,6 +181,13 @@ function openDrawer(d) {
   document.getElementById('modalDesc').textContent = d.desc;
   var btn = document.getElementById('modalBtn');
   btn.textContent = d.btn; btn.href = d.file;
+  var imgEl = document.getElementById('modalImg');
+  if (d.img) {
+    imgEl.src = d.img;
+    imgEl.style.display = 'block';
+  } else {
+    imgEl.style.display = 'none';
+  }
   var backdrop = document.getElementById('resBackdrop');
   backdrop.style.display = 'flex';
   backdrop.offsetHeight;
@@ -282,6 +289,7 @@ function renderCards(data, gridId) {
       <div class="res-modal-type" id="modalType"></div>
       <h2 id="modalTitle"></h2>
       <div class="res-modal-divider"></div>
+      <img id="modalImg" src="" alt="" style="display:none;width:100%;max-height:220px;object-fit:cover;border-radius:2px;margin-bottom:20px;">
       <p id="modalDesc"></p>
       <a id="modalBtn" class="btn" download>Download →</a>
     </div>

@@ -82,6 +82,50 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.12);
     }
 
+    /* Impact strip */
+    .impact-strip {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      background: var(--dark-brown);
+      border-radius: 4px;
+      padding: 40px 48px;
+    }
+    .impact-stat {
+      text-align: center;
+      flex: 1;
+      min-width: 160px;
+    }
+    .impact-num {
+      display: block;
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .impact-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(245,240,234,0.55);
+    }
+    .impact-divider {
+      width: 1px;
+      height: 56px;
+      background: rgba(184,151,106,0.3);
+      margin: 0 24px;
+    }
+    @media (max-width: 600px) {
+      .impact-divider { display: none; }
+      .impact-strip { gap: 28px; }
+    }
+
     /* Gold circle ring on hover — wrapper sits outside overflow:hidden avatar */
     .team-avatar-wrap {
       position: relative;
@@ -162,6 +206,26 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- About Blurb -->
     <div class="section">
       <p style="font-size: 1.2rem; line-height: 1.85; color: #5C4F3D; text-align: left;">Eastside Philosophy is a student-led organization built on the belief that philosophy belongs in every classroom. We are a group of high school students from across the Eastside who are committed to making philosophy accessible, rigorous, and relevant. Through lectures, interviews with leading academics, and a growing resource library, we work to bring the foundational questions of human life into spaces where students can engage with them seriously. Our chapters span multiple schools, and our mission is simple: to help students think clearly, argue well, and engage with the ideas that have shaped the world.</p>
+    </div>
+
+    <!-- Impact Numbers -->
+    <div class="section">
+      <div class="impact-strip">
+        <div class="impact-stat">
+          <span class="impact-num" data-target="1000" data-suffix="+">0</span>
+          <span class="impact-label">Students Reached</span>
+        </div>
+        <div class="impact-divider"></div>
+        <div class="impact-stat">
+          <span class="impact-num" data-target="40" data-suffix="+">0</span>
+          <span class="impact-label">Lectures &amp; Presentations</span>
+        </div>
+        <div class="impact-divider"></div>
+        <div class="impact-stat">
+          <span class="impact-num" data-target="2.5" data-suffix=" Years">0</span>
+          <span class="impact-label">Years Active</span>
+        </div>
+      </div>
     </div>
 
     <!-- Executive Team -->
@@ -413,5 +477,35 @@ document.addEventListener('DOMContentLoaded', function() {
   </script>
 
   <script src="animations.js?v=11"></script>
+  <script>
+    // Animate impact counters when scrolled into view
+    function animateCounter(el) {
+      var target = parseFloat(el.getAttribute('data-target'));
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = 1600;
+      var start = null;
+      var isDecimal = target % 1 !== 0;
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var val = target * ease;
+        el.textContent = (isDecimal ? val.toFixed(1) : Math.floor(val)) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = (isDecimal ? target.toFixed(1) : target) + suffix;
+      }
+      requestAnimationFrame(step);
+    }
+
+    var counters = document.querySelectorAll('.impact-num');
+    var triggered = false;
+    var observer = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting && !triggered) {
+        triggered = true;
+        counters.forEach(function(el) { animateCounter(el); });
+      }
+    }, { threshold: 0.3 });
+    if (counters.length) observer.observe(counters[0].closest('.section'));
+  </script>
 </body>
 </html>

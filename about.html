@@ -84,46 +84,41 @@
 
     /* Impact strip */
     .impact-strip {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       background: var(--dark-brown);
-      border-radius: 4px;
-      padding: 40px 48px;
+      padding: 0;
+      overflow: hidden;
     }
     .impact-stat {
       text-align: center;
-      flex: 1;
-      min-width: 160px;
+      padding: 52px 32px;
+      border-right: 1px solid rgba(184,151,106,0.15);
+      position: relative;
     }
+    .impact-stat:last-child { border-right: none; }
     .impact-num {
       display: block;
       font-family: var(--serif);
-      font-size: 3rem;
-      font-weight: 600;
+      font-size: 3.8rem;
+      font-weight: 300;
       color: var(--accent-gold);
       line-height: 1;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+      letter-spacing: -1px;
     }
     .impact-label {
       font-family: var(--sans);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: rgba(245,240,234,0.55);
-    }
-    .impact-divider {
-      width: 1px;
-      height: 56px;
-      background: rgba(184,151,106,0.3);
-      margin: 0 24px;
+      color: rgba(245,240,234,0.45);
     }
     @media (max-width: 600px) {
-      .impact-divider { display: none; }
-      .impact-strip { gap: 28px; }
+      .impact-strip { grid-template-columns: 1fr; }
+      .impact-stat { border-right: none; border-bottom: 1px solid rgba(184,151,106,0.15); }
+      .impact-stat:last-child { border-bottom: none; }
     }
 
     /* Gold circle ring on hover — wrapper sits outside overflow:hidden avatar */
@@ -215,14 +210,12 @@ document.addEventListener('DOMContentLoaded', function() {
           <span class="impact-num" data-target="1000" data-suffix="+">0</span>
           <span class="impact-label">Students Reached</span>
         </div>
-        <div class="impact-divider"></div>
         <div class="impact-stat">
           <span class="impact-num" data-target="40" data-suffix="+">0</span>
           <span class="impact-label">Lectures &amp; Presentations</span>
         </div>
-        <div class="impact-divider"></div>
         <div class="impact-stat">
-          <span class="impact-num" data-target="2.5" data-suffix=" Years">0</span>
+          <span class="impact-num" data-target="2.5" data-suffix=" Yrs">0</span>
           <span class="impact-label">Years Active</span>
         </div>
       </div>
@@ -482,13 +475,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateCounter(el) {
       var target = parseFloat(el.getAttribute('data-target'));
       var suffix = el.getAttribute('data-suffix') || '';
-      var duration = 1600;
+      var duration = 2800;
       var start = null;
       var isDecimal = target % 1 !== 0;
       function step(ts) {
         if (!start) start = ts;
         var progress = Math.min((ts - start) / duration, 1);
-        var ease = 1 - Math.pow(1 - progress, 3);
+        var ease = progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
         var val = target * ease;
         el.textContent = (isDecimal ? val.toFixed(1) : Math.floor(val)) + suffix;
         if (progress < 1) requestAnimationFrame(step);

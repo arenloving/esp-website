@@ -104,7 +104,7 @@ a.nav-logo:hover,
   color: #F5F0EA !important;
   cursor: default !important;
   text-decoration: none !important;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .nav-logo .nav-motto {

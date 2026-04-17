@@ -7,7 +7,7 @@
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us — Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=62">
+  <link rel="stylesheet" href="styles.css?v=63">
   <style>
     /* Bio Modal */
     .bio-overlay {
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
           </div>
           <h3>Gregoire Keene</h3>
-          <p class="role">Operations Lead</p>
+          <p class="role">Chief Operating Officer</p>
         </div>
 
         <div class="team-card" onclick="openBio('lucas')">
@@ -211,7 +211,60 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
           </div>
           <h3>Lucas Ma</h3>
+          <p class="role">Head of Curriculum Development</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('evan')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <img src="images/evan.jpg" alt="Evan Lee">
+          </div>
+          </div>
+          <h3>Evan Lee</h3>
           <p class="role">Representative</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Curriculum Development Team -->
+    <div class="section">
+      <h2 class="team-section-title">Curriculum Development Team</h2>
+      <div class="team-grid">
+
+        <div class="team-card" onclick="openBio('lucas')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <img src="images/lucas.jpg" alt="Lucas Ma" style="object-position: center center;">
+          </div>
+          </div>
+          <h3>Lucas Ma</h3>
+          <p class="role">Head of Curriculum Development</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('hennry')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <img src="images/hennry.jpg?v=2" alt="Hennry Lou">
+          </div>
+          </div>
+          <h3>Hennry Lou</h3>
+          <p class="role">Chief Administrative Officer</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('evan')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <img src="images/evan.jpg" alt="Evan Lee">
+          </div>
+          </div>
+          <h3>Evan Lee</h3>
+          <p class="role">Representative</p>
+        </div>
+
+        <div class="team-card" onclick="openBio('abhi')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+          </div>
+          </div>
+          <h3>Abhi Vasudeva</h3>
+          <p class="role">Member</p>
         </div>
 
       </div>
@@ -297,12 +350,12 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       gregoire: {
         name: 'Gregoire Keene',
-        role: 'Operations Lead',
+        role: 'Chief Operating Officer',
         bio: 'Greg focuses on theology and psychology, particularly in exploring questions of morality and the nature of the human condition. He is also interested in the applied sciences, including chemistry, and engages in it through activities such as the Chemistry Olympiad. On his spare time, he enjoys reading, writing, and playing soccer.'
       },
       lucas: {
         name: 'Lucas Ma',
-        role: 'Representative',
+        role: 'Head of Curriculum Development',
         bio: "Philosophy and literature has been a longtime passion of Lucas Ma. Since he picked up an Orwellian novel in the 5th grade, he became adamant about learning the ropes of ethics and metaphysics. His ability is best reflected in his presentation and oratory skills. He currently serves as the President of Beaver Development Society, as well as a concurrent tenure scaling a stealth mode startup. He also enjoys debate, competitive shotgun shooting, and trading."
       },
       jason: {
@@ -310,6 +363,8 @@ document.addEventListener('DOMContentLoaded', function() {
         role: 'Chapter President',
         bio: 'Jason Chen is a sophomore at the Bush School in Seattle, Washington. He is a devoted Model United Nations (MUN) enthusiast and is actively staffing conferences like PACMUN. His philosophy fervor comes from his involvement in debates over contemporary social issues during committee, and his sense of civic duty. Readings by John Reich on the Common Good, as well as Albert Camus\'s essay on the Myth of Sisyphus, serve as valuable starting points on his journey. Outside of MUN, he engages in international trap shooting, freshwater aquascaping, and biology-related topics.'
       },
+      evan: { name: 'Evan Lee', role: 'Representative', bio: 'Evan Lee is a junior at the International School in Bellevue, Washington. As a semifinalist in the USA Biology Olympiad (USABO), he has developed a strong interest in the intersection of biology and philosophy, particularly in the ethics of medicine and health science. He is curious about how scientific advancements shape moral decision-making, with a focus on issues like medical responsibility, access to care, and the ethical limits of new technologies. Outside of his academic interests, he enjoys exploring biology beyond the classroom and running competitively.' },
+      abhi: { name: 'Abhi Vasudeva', role: 'Member', bio: 'Abhi Vasudeva is a 9th-grade student at the International School with interests in biology and mathematics, particularly genetics and abstract concepts such as imaginary numbers. He is also involved in FTC robotics, where he engages in hands-on engineering, programming, and collaborative problem-solving. Outside of academics, he has a strong athletic background, having played soccer for seven years and football for five, and he enjoys staying active through sports and competition.' },
       vivian: { name: 'Vivian Cayetano', role: 'Director of Social Media & Branding', bio: 'Vivian Cayetano is a sophomore at The Bush School. After taking classes such as Cultural Ethics, Bioethics, History, and Human Behavior, she developed a strong interest in exploring how people think, act, and make moral decisions. She enjoys reading sociology books and engaging with different perspectives on society and human behavior. Outside the classroom, Vivian participates in Model United Nations and is a summer intern at a debate camp, where she continues to build her skills in argumentation and critical thinking. Through Eastside Philosophy, she hopes to further explore complex ideas and take part in meaningful discourse.' },
       max: { name: 'Max Nichols', role: 'Director of Curriculum Development', bio: 'Max is a sophomore at The Bush School in Seattle. He is involved in his school\'s Model United Nations club and plays Ultimate Frisbee competitively. He has a deep appreciation for literature and art, engaging with both aesthetically and philosophically. He excels in writing, mathematics, and debate.' },
       sophia: { name: 'Sophia Elkhamri', role: 'Director of Events', bio: 'Sophia is a sophomore at The Bush School. She enjoys spending time outdoors and is an avid skier and hockey player. She has a strong interest in scientific ideas and how they connect to real life, particularly through her Darwinian Revolution class. She has been especially curious about Social Darwinism and the ethical and moral implications of its application throughout history.' }

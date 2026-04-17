@@ -84,27 +84,30 @@
 
     /* Impact strip */
     .impact-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: var(--dark-brown);
-      padding: 0;
-      overflow: hidden;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 16px 0;
     }
     .impact-stat {
       text-align: center;
-      padding: 52px 32px;
-      border-right: 1px solid rgba(184,151,106,0.15);
-      position: relative;
+      padding: 40px 48px;
+      background: rgba(184,151,106,0.08);
+      border: 2px solid rgba(184,151,106,0.18);
+      border-radius: 2px;
+      flex: 1;
+      min-width: 200px;
+      max-width: 280px;
     }
-    .impact-stat:last-child { border-right: none; }
     .impact-num {
       display: block;
       font-family: var(--serif);
       font-size: 3.8rem;
       font-weight: 300;
-      color: var(--accent-gold);
+      color: var(--dark-brown);
       line-height: 1;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       letter-spacing: -1px;
     }
     .impact-label {
@@ -113,12 +116,10 @@
       font-weight: 600;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: rgba(245,240,234,0.45);
+      color: var(--warm-gray);
     }
     @media (max-width: 600px) {
-      .impact-strip { grid-template-columns: 1fr; }
-      .impact-stat { border-right: none; border-bottom: 1px solid rgba(184,151,106,0.15); }
-      .impact-stat:last-child { border-bottom: none; }
+      .impact-stat { min-width: 100%; }
     }
 
     /* Gold circle ring on hover — wrapper sits outside overflow:hidden avatar */

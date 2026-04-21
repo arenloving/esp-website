@@ -8,30 +8,265 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Forum — Eastside Philosophy</title>
   <link rel="stylesheet" href="styles.css?v=63">
+  <style>
+    .forum-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .forum-entry {
+      display: flex;
+      align-items: stretch;
+      border-bottom: 1px solid var(--light-border);
+      padding: 28px 0;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      gap: 32px;
+    }
+    .forum-entry:hover { background: rgba(184,151,106,0.04); }
+    .forum-entry:first-child { border-top: 1px solid var(--light-border); }
+
+    .forum-entry-meta {
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+    .forum-entry-type {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+    .forum-entry-date {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+    }
+    .forum-entry-author {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--muted-brown);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .forum-entry-body {
+      flex: 1;
+    }
+    .forum-entry-title {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--dark-brown);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .forum-entry-excerpt {
+      font-size: 0.9rem;
+      color: var(--muted-brown);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .forum-entry-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--light-border);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .forum-entry:hover .forum-entry-arrow {
+      color: var(--accent-gold);
+      transform: translateX(4px);
+    }
+
+    /* Paper reader overlay */
+    .paper-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,22,16,0);
+      backdrop-filter: blur(0px);
+      z-index: 1999;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+    .paper-backdrop.active {
+      background: rgba(26,22,16,0.5);
+      backdrop-filter: blur(6px);
+    }
+
+    .paper-modal {
+      position: fixed;
+      top: 5vh;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      width: 92vw;
+      max-width: 960px;
+      height: 90vh;
+      background: var(--cream);
+      border: 1px solid var(--light-border);
+      border-radius: 4px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: row;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.2,0.64,1);
+      z-index: 2000;
+    }
+    .paper-backdrop.active .paper-modal {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Main reading area */
+    .paper-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 56px 60px;
+    }
+    .paper-content h1 {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: var(--dark-brown);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .paper-content .paper-byline {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 32px;
+    }
+    .paper-content .paper-divider {
+      width: 48px;
+      height: 1.5px;
+      background: var(--accent-gold);
+      opacity: 0.5;
+      margin-bottom: 32px;
+    }
+    .paper-content .paper-section-heading {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark-brown);
+      margin: 32px 0 12px;
+    }
+    .paper-content p {
+      font-size: 1rem;
+      line-height: 1.95;
+      color: var(--muted-brown);
+      margin-bottom: 20px;
+    }
+    .paper-content .paper-citations {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-border);
+    }
+    .paper-content .paper-citations p {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--warm-gray);
+      margin-bottom: 8px;
+    }
+
+    /* Sidebar */
+    .paper-sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background: var(--ivory);
+      border-left: 1px solid var(--light-border);
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .paper-close {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--warm-gray);
+      font-family: var(--serif);
+      align-self: flex-end;
+      transition: color 0.2s ease, transform 0.2s ease;
+      padding: 0;
+      line-height: 1;
+    }
+    .paper-close:hover { color: var(--dark-brown); transform: rotate(90deg); }
+
+    .paper-sidebar-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 4px;
+    }
+    .paper-sidebar-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--dark-brown);
+      line-height: 1.4;
+    }
+    .paper-download {
+      display: block;
+      text-align: center;
+      margin-top: auto;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 700px) {
+      .paper-modal { flex-direction: column; width: 98vw; }
+      .paper-sidebar { width: 100%; border-left: none; border-top: 1px solid var(--light-border); padding: 24px; flex-direction: row; flex-wrap: wrap; }
+      .paper-content { padding: 32px 24px; }
+      .forum-entry { flex-direction: column; gap: 12px; }
+      .forum-entry-meta { min-width: unset; }
+    }
+  </style>
 </head>
 <body>
 <script>
-// Force all content visible immediately - no animations
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
     el.classList.remove('animate-on-scroll');
-    el.style.opacity = '1';
-    el.style.transform = 'none';
+    el.style.opacity = '1'; el.style.transform = 'none';
   });
   document.querySelectorAll('.section, .lecture-card, .team-card, .resource-item, .event-card, .forum-placeholder').forEach(function(el) {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-    el.style.transition = 'none';
+    el.style.opacity = '1'; el.style.transform = 'none'; el.style.transition = 'none';
   });
 });
+
+function openPaper(id) {
+  var backdrop = document.getElementById('paperBackdrop');
+  backdrop.style.display = 'flex';
+  backdrop.style.alignItems = 'flex-start';
+  backdrop.offsetHeight;
+  backdrop.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closePaper() {
+  var backdrop = document.getElementById('paperBackdrop');
+  backdrop.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(function() { backdrop.style.display = 'none'; }, 380);
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePaper(); });
 </script>
 
-  <!-- Navigation -->
   <nav class="site-nav">
     <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</span>
-    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="lectures.html">Lectures</a></li>
@@ -42,17 +277,98 @@ document.addEventListener('DOMContentLoaded', function() {
     </ul>
   </nav>
 
-  <!-- Page Header -->
   <div class="page-header">
     <h1>Forum</h1>
+    <p class="subtitle">Student research, essays, and philosophical writing</p>
   </div>
 
-  <div class="page-container">
+  <div class="page-container wide">
     <div class="section">
-      <div class="forum-placeholder">
-        <h2>Student Forum — Coming Soon</h2>
-        <p>This will be the home for student essays, philosophical arguments, open discussions, and collaborative thinking. A place to write, debate, and grow.</p>
+      <div class="forum-grid">
+
+        <div class="forum-entry" onclick="openPaper('aerospace')">
+          <div class="forum-entry-meta">
+            <p class="forum-entry-type">Research Essay</p>
+            <p class="forum-entry-date">April 2026</p>
+            <p class="forum-entry-author">Siddharth Vasudeva</p>
+          </div>
+          <div class="forum-entry-body">
+            <h2 class="forum-entry-title">Code of Conduct for Aerospace Sustainability: Lessons from the Duwamish River Superfund Site</h2>
+            <p class="forum-entry-excerpt">The Aerospace and Aeronautical field has long been a driver of innovation, economic growth, and global connectivity. But the scale of its development has contributed to serious environmental and social concerns — a reality made vivid by the Duwamish River Superfund site in Seattle, Washington.</p>
+          </div>
+          <div class="forum-entry-arrow">→</div>
+        </div>
+
       </div>
+    </div>
+  </div>
+
+  <!-- Paper Reader -->
+  <div class="paper-backdrop" id="paperBackdrop" onclick="if(event.target===this)closePaper()">
+    <div class="paper-modal">
+
+      <!-- Reading area -->
+      <div class="paper-content">
+        <h1>Code of Conduct for Aerospace Sustainability: Lessons from the Duwamish River Superfund Site</h1>
+        <p class="paper-byline">Siddharth Vasudeva &nbsp;·&nbsp; Eastside Philosophy &nbsp;·&nbsp; April 2026</p>
+        <div class="paper-divider"></div>
+
+        <h2 class="paper-section-heading">Introduction</h2>
+        <p>The Aerospace and Aeronautical field has for a long time been a reason for a lot of innovation we have today. It has resulted in great economic growth as well as unprecedented global connectivity unlike ever seen before. However, the scale of its development has long contributed to a lot of environmental and social concerns. A key example of these concerns comes from the Duwamish River Superfund site in Seattle, Washington, which is a prominent example of the consequences of industrial pollution. This essay will reflect on the Duwamish River case study by examining the ethical issues the industry presents, and it will highlight a Code of Conduct that the Aerospace industry can follow to continue to foster innovation while also keeping in mind the environment and equality.</p>
+
+        <h2 class="paper-section-heading">Summary</h2>
+        <p>The Duwamish river waterway, which runs through Seattle and its industrial regions, was deemed a Superfund site in 2001 by the US Environmental Protection Agency. The constant use of industrialized materials for manufacturing led to severe contamination from metals, PCBs, and other poisonous chemicals. Most of the impact was to the lower Duwamish river, which suffered decades of pollution from factories of Aerospace companies. As the Washington Aerospace industry grew with Boeing, the production of planes also grew, increasing the amount of pollution going into the surrounding environment. This contamination created grave health risks to surrounding communities. Cleanup efforts have been put in place, but the process is slow, costly, and complex — a testament to the scale of the impacts and what could have been done to prevent them.</p>
+
+        <h2 class="paper-section-heading">Purpose</h2>
+        <p>The Aerospace industry must adopt a formal Ethical Code of Conduct to guarantee that great innovation doesn't come at the cost of human health or the environment. The reason for this Code of Conduct is to give clear rules, regulations, and guidelines for sustainable manufacturing practices. The main principles this code complies with are sustainability, accountability, innovation with conscience, and a commitment to social and environmental protection. By establishing these values, the Aerospace industry can mitigate the harm they cause and prevent future issues from arising.</p>
+
+        <h2 class="paper-section-heading">Environmental Responsibility</h2>
+        <p>Aerospace companies must commit to mitigating their own environmental impacts — reducing emissions, managing hazardous waste, and minimizing sound pollution and resource usage. For example, Boeing has developed programs to reduce toxic organic compounds in its manufacturing and assembling processes, showing that environmental management can coexist with innovation (Boeing, 2021). Additionally, sustainable aviation fuels have been developed with the potential to significantly reduce the carbon footprint of air travel (IATA, 2023). Companies should commit to consistent environmental impact assessments, monitoring, and reporting — practices that can prevent the kind of environmental harm seen along the Duwamish.</p>
+
+        <h2 class="paper-section-heading">Sustainable Innovation</h2>
+        <p>The Aerospace industry should heavily invest in research and development of carbon-neutral and green technologies. This could include more fuel-efficient aircraft, sustainable or hybrid electric propulsion systems, and alternative energy sources within aircraft. A prime example is Airbus and their ZEROe program — a commitment to developing a hydrogen-powered aircraft (Airbus, 2024). Greater investment in sustainability innovation would create the groundwork for even more advanced technology while also mitigating environmental impact.</p>
+
+        <h2 class="paper-section-heading">Global Cooperation and Equity</h2>
+        <p>Although the Aerospace community has grown throughout the years, its development has had worldwide consequences, and ethical codes must address global equity. Companies should engage in international cooperation and partnerships to share ideas and technologies that address the negative impacts of production. The International Civil Aviation Organization's Carbon Offsetting and Reduction Scheme for International Aviation (CORSIA) shows a collaborative effort to address global emissions while promoting equitable environmental responsibility (ICAO, 2023).</p>
+
+        <h2 class="paper-section-heading">Conclusion</h2>
+        <p>The Duwamish River Superfund site offers a powerful example of the consequences of companies neglecting the impact of their processes. By adopting a Code of Conduct focused on the environment, sustainability, and global equity, the Aerospace sector can create environment-aware innovation — advancing technology while ensuring a safe environment for current communities and generations to come.</p>
+
+        <div class="paper-citations">
+          <p class="paper-section-heading" style="font-size:0.85rem;margin-bottom:16px;">Citations</p>
+          <p>Airbus. (2024, September 10). ZEROe: Our hydrogen-powered aircraft. https://www.airbus.com/en/innovation/energy-transition/hydrogen/zeroe-our-hydrogen-powered-aircraft</p>
+          <p>Boeing. (2021). Sustainability. https://www.boeing.com/sustainability#sustainable-aerospace</p>
+          <p>Environmental Protection Agency. Case Summary: Terminal 117 Area of the Lower Duwamish Waterway Superfund Site. https://www.epa.gov/enforcement/case-summary-terminal-117-area-lower-duwamish-waterway-superfund-site</p>
+          <p>IATA. (2023). Developing sustainable aviation fuel (SAF). https://www.iata.org/en/programs/sustainability/sustainable-aviation-fuels/</p>
+          <p>King County, Washington. (n.d.). Duwamish River Superfund Site. https://kingcounty.gov/en/dept/dph/health-safety/environmental-health/healthy-water-air-soil/safe-fishing/superfund-site</p>
+          <p>ICAO. (n.d.). Carbon Offsetting and Reduction Scheme for International Aviation (CORSIA). https://www2023.icao.int/environmental-protection/CORSIA/Pages/default.aspx</p>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="paper-sidebar">
+        <button class="paper-close" onclick="closePaper()">&times;</button>
+
+        <div>
+          <p class="paper-sidebar-label">Author</p>
+          <p class="paper-sidebar-value">Siddharth Vasudeva</p>
+        </div>
+        <div>
+          <p class="paper-sidebar-label">Published</p>
+          <p class="paper-sidebar-value">April 2026</p>
+        </div>
+        <div>
+          <p class="paper-sidebar-label">Type</p>
+          <p class="paper-sidebar-value">Research Essay</p>
+        </div>
+        <div>
+          <p class="paper-sidebar-label">Topic</p>
+          <p class="paper-sidebar-value">Ethics of Aerospace & Environmental Sustainability</p>
+        </div>
+
+        <a href="Siddharth-Aerospace-Ethics.docx" class="btn paper-download" download>Download Paper →</a>
+      </div>
+
     </div>
   </div>
 

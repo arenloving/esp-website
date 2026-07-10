@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us — Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=63">
+  <link rel="stylesheet" href="styles.css?v=76">
   <style>
     /* Bio Modal */
     .bio-overlay {
@@ -120,6 +122,27 @@
     }
     @media (max-width: 600px) {
       .impact-stat { min-width: 100%; }
+      .bio-overlay {
+        align-items: flex-end;
+      }
+      .bio-modal {
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 24px 20px;
+        width: 100%;
+        border-radius: 12px 12px 0 0;
+        margin: 0;
+      }
+      .bio-modal .close-btn {
+        position: sticky;
+        top: 0;
+        float: right;
+        z-index: 10;
+        background: var(--cream);
+        padding: 4px 8px;
+        border-radius: 50%;
+        font-size: 1.8rem;
+      }
     }
 
     /* Gold circle ring on hover — wrapper sits outside overflow:hidden avatar */
@@ -186,7 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
       <li><a href="index.html">Home</a></li>
       <li><a href="lectures.html">Lectures</a></li>
       <li><a href="interviews.html">Interviews</a></li>
-      <li><a href="forum.html">Forum</a></li>
       <li><a href="resources.html">Resource Library</a></li>
       <li class="nav-dropdown"><a href="about.html" class="active">About</a><ul class="dropdown-menu"><li><a href="about.html">About Us</a></li><li><a href="join.html">Get Involved</a></li></ul></li>
     </ul>
@@ -194,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <!-- Page Header -->
   <div class="page-header">
-    <h1>About Us</h1>
+    <h1 style="display: inline-flex; align-items: center; gap: 20px; justify-content: center;"><img src="images/esp-crest-color-transparent.png" alt="Eastside Philosophy Crest" style="width: 80px; height: auto;"> About Us</h1>
   </div>
 
   <div class="page-container">
@@ -204,23 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <p style="font-size: 1.2rem; line-height: 1.85; color: #5C4F3D; text-align: left;">Eastside Philosophy is a student-led organization built on the belief that philosophy belongs in every classroom. We are a group of high school students from across the Eastside who are committed to making philosophy accessible, rigorous, and relevant. Through lectures, interviews with leading academics, and a growing resource library, we work to bring the foundational questions of human life into spaces where students can engage with them seriously. Our chapters span multiple schools, and our mission is simple: to help students think clearly, argue well, and engage with the ideas that have shaped the world.</p>
     </div>
 
-    <!-- Impact Numbers -->
-    <div class="section">
-      <div class="impact-strip">
-        <div class="impact-stat">
-          <span class="impact-num" data-target="1000" data-suffix="+">0</span>
-          <span class="impact-label">Students Reached</span>
-        </div>
-        <div class="impact-stat">
-          <span class="impact-num" data-target="40" data-suffix="+">0</span>
-          <span class="impact-label">Lectures &amp; Presentations</span>
-        </div>
-        <div class="impact-stat">
-          <span class="impact-num" data-target="2.5" data-suffix=" Yrs">0</span>
-          <span class="impact-label">Years Active</span>
-        </div>
-      </div>
-    </div>
+
 
     <!-- Executive Team -->
     <div class="section">
@@ -394,6 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 
   <footer class="site-footer">
+    <img src="images/esp-crest-color-transparent.png" alt="ESP" style="width:40px;height:auto;margin-bottom:10px;">
     <p>&copy; 2024 Eastside Philosophy. All rights reserved.</p>
     <p style="font-size:0.78rem;margin-top:6px;color:var(--warm-gray);">Eastside Philosophy is a registered 501(c)(3) nonprofit organization.</p>
   </footer>
@@ -403,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
       aren: {
         name: 'Aren Loving',
         role: 'President',
-        bio: 'Aren founded ESP with Jeffery as he believes that philosophy has become an important subject to study in recent years, and he aims to cultivate interest in philosophy as a way of developing the reasoning and judgment necessary to navigate the world. He enjoys continental philosophy, specifically writers like Hume and Nietzsche, and has recently gotten into questions regarding the philosophy of technology. In addition, he is a Life Scout in Troop 430 in Medina, Washington, and plays baseball competitively.'
+        bio: 'Aren co-founded ESP with Jeffery to help make philosophy more accessible to students. He enjoys continental philosophy, specifically writers like Hume and Nietzsche, and has recently gotten into questions regarding the philosophy of technology. In addition, he is a Life Scout in Troop 430 in Medina, Washington, and plays baseball.'
       },
       jeffery: {
         name: 'Jeffery Lou',

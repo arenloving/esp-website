@@ -310,9 +310,9 @@ p {
 }
 
 .subtitle {
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  font-style: italic;
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-style: normal;
   color: var(--warm-gray);
   margin-top: 8px;
 }
@@ -638,8 +638,8 @@ p {
 
 .page-header .subtitle {
   margin-top: 12px;
-  font-weight: 600;
-  font-size: 1.35rem;
+  font-weight: 400;
+  font-size: 1.05rem;
 }
 
 /* --- Resource Library --- */

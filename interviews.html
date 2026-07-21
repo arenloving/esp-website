@@ -4,12 +4,21 @@
   <meta charset="UTF-8">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Watch interviews and conversations with university scholars and professors hosted by Eastside Philosophy, including guests from Harvard and the University of Washington.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Eastside Philosophy">
+  <meta property="og:title" content="Interviews — Eastside Philosophy">
+  <meta property="og:description" content="Watch interviews and conversations with university scholars and professors hosted by Eastside Philosophy, including guests from Harvard and the University of Washington.">
+  <meta property="og:url" content="https://eastsidephilosophy.org/interviews.html">
+  <link rel="canonical" href="https://eastsidephilosophy.org/interviews.html">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap">
   <title>Interviews — Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=76">
+  <link rel="stylesheet" href="styles.css?v=77">
 </head>
 <body>
 <script>
@@ -30,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <!-- Navigation -->
   <nav class="site-nav">
-    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</span>
+    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img" width="144" height="144">Eastside Philosophy</span>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -43,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </ul>
   </nav>
 
+  <main>
   <!-- Page Header -->
   <div class="page-header">
     <h1>Interviews</h1>
@@ -50,20 +60,21 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 
   <div class="page-container wide">
+    <h2 class="section-label">Scholar Conversations</h2>
 
     <!-- Interview 1 -->
     <div class="section">
       <div class="lecture-card">
         <div class="lecture-images stacked">
-          <img src="images/interview-classroom.jpg" alt="Classroom during interview with Professor Behrends" style="object-position: center 40%;">
-          <img src="images/interview-presenter.jpg" alt="Students presenting during interview session" style="object-position: center 30%;">
+          <img src="images/interview-classroom.jpg" alt="Classroom during interview with Professor Behrends" loading="lazy" style="object-position: center 40%;" width="369" height="800">
+          <img src="images/interview-presenter.jpg" alt="Students presenting during interview session" loading="lazy" style="object-position: center 30%;" width="800" height="600">
         </div>
         <div class="lecture-info">
           <p class="date">November 13, 2025 · ESP Live Interview</p>
           <h3>A Conversation on AI Ethics with the Director of Ethics @ Harvard</h3>
           <p class="lecture-subtitle" style="display: flex; align-items: center; gap: 10px;">
             <a href="https://philosophy.fas.harvard.edu/people/jeff-behrends" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; border-bottom: 1.5px solid #B8976A; padding-bottom: 2px; transition: all 0.25s ease; cursor: pointer;" onmouseover="this.style.color='#B8976A'; this.style.fontWeight='700'; this.style.fontSize='1.08em'" onmouseout="this.style.color='inherit'; this.style.fontWeight=''; this.style.fontSize=''">
-              <img src="images/harvard-logo.png" alt="Harvard" style="width: 28px; height: 28px; object-fit: contain;"> Professor Jeff Behrends
+              <img src="images/harvard-logo.png" alt="Harvard" loading="lazy" style="width: 28px; height: 28px; object-fit: contain;" width="200" height="195"> Professor Jeff Behrends
             </a>
           </p>
           <p>A live interview and discussion with Professor Jeff Behrends, Director of Ethics at Harvard, exploring the ethical dimensions of artificial intelligence, moral responsibility in technology, and the philosophical foundations of AI governance.</p>
@@ -76,14 +87,14 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="section">
       <div class="lecture-card">
         <div class="lecture-images stacked">
-          <img src="images/erica-bigelow-classroom-2.jpg" alt="Students watching Erica Bigelow on the projector">
+          <img src="images/erica-bigelow-classroom-2.jpg" alt="Students watching Erica Bigelow on the projector" loading="lazy" width="1000" height="750">
         </div>
         <div class="lecture-info">
           <p class="date">June 1, 2026 · ESP Live Interview</p>
           <h3>A Conversation on Social Philosophy with a UW Philosopher</h3>
           <p class="lecture-subtitle" style="display: flex; align-items: center; gap: 10px;">
             <a href="https://sites.google.com/uw.edu/ericabigelow/home" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; border-bottom: 1.5px solid #B8976A; padding-bottom: 2px; transition: all 0.25s ease; cursor: pointer;" onmouseover="this.style.color='#B8976A'; this.style.fontWeight='700'; this.style.fontSize='1.08em'" onmouseout="this.style.color='inherit'; this.style.fontWeight=''; this.style.fontSize=''">
-              <img src="images/uw-logo.png" alt="University of Washington" style="width: 28px; height: 19px; object-fit: contain;"> Erica Bigelow
+              <img src="images/uw-logo.png" alt="University of Washington" loading="lazy" style="width: 28px; height: 19px; object-fit: contain;" width="450" height="303"> Erica Bigelow
             </a>
           </p>
           <p>A live interview and discussion with Erica Bigelow, PhD candidate at the University of Washington, exploring social philosophy, the philosophy of emotion, and how emotional expectations can function as instruments of injustice.</p>
@@ -94,9 +105,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </div>
 
+  </main>
   <footer class="site-footer">
-    <img src="images/esp-crest-color-transparent.png" alt="ESP" style="width:40px;height:auto;margin-bottom:10px;">
-    <p>&copy; 2024 Eastside Philosophy. All rights reserved.</p>
+    <img src="images/esp-crest-color-transparent.png" alt="ESP" loading="lazy" style="width:40px;height:auto;margin-bottom:10px;" width="80" height="99">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
     <p style="font-size:0.78rem;margin-top:6px;color:var(--warm-gray);">Eastside Philosophy is a registered 501(c)(3) nonprofit organization.</p>
   </footer>
 

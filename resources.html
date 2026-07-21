@@ -4,12 +4,21 @@
   <meta charset="UTF-8">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free philosophy presentations, worksheets, and teaching resources from Eastside Philosophy — covering ethics, metaphysics, logic, epistemology, and political philosophy.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Eastside Philosophy">
+  <meta property="og:title" content="Resource Library — Eastside Philosophy">
+  <meta property="og:description" content="Free philosophy presentations, worksheets, and teaching resources from Eastside Philosophy — covering ethics, metaphysics, logic, epistemology, and political philosophy.">
+  <meta property="og:url" content="https://eastsidephilosophy.org/resources.html">
+  <link rel="canonical" href="https://eastsidephilosophy.org/resources.html">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap">
   <title>Resource Library — Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=76">
+  <link rel="stylesheet" href="styles.css?v=77">
   <style>
     .resource-grid {
       display: grid;
@@ -357,7 +366,7 @@ function renderCards(data, gridId) {
 </script>
 
   <nav class="site-nav">
-    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</span>
+    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img" width="144" height="144">Eastside Philosophy</span>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -368,6 +377,7 @@ function renderCards(data, gridId) {
     </ul>
   </nav>
 
+  <main>
   <div class="page-header">
     <h1>Resource Library</h1>
     <p class="subtitle">Lessons, slides, and materials for independent learning</p>
@@ -375,17 +385,17 @@ function renderCards(data, gridId) {
 
   <div class="page-container wide">
     <div class="section">
-      <span class="section-label">Presentations</span>
+      <h2 class="section-label">Presentations</h2>
       <div class="resource-grid" id="presGrid"></div>
     </div>
     <div class="section">
-      <span class="section-label">Foundations of Philosophy</span>
+      <h2 class="section-label">Foundations of Philosophy</h2>
       <p style="font-size: 1.05rem; line-height: 1.7; color: #5C4F3D; margin-bottom: 24px;">A 10-part self-guided worksheet series covering the fundamentals of philosophical thinking.</p>
       <div class="resource-grid" id="foundationsGrid"></div>
     </div>
 
     <div class="section">
-      <span class="section-label">Additional Resources</span>
+      <h2 class="section-label">Additional Resources</h2>
       <div class="resource-grid">
         <div class="resource-item" style="cursor:pointer;" onclick="openDrawer({type:'Lesson Planner',title:'Introduction to Immanuel Kant',desc:'A comprehensive teaching resource covering Kant\'s life, the Critique of Pure Reason, the Categorical Imperative, aesthetics and the sublime, political philosophy and Perpetual Peace, and his lasting legacy. Includes discussion questions for classroom use.',file:'Immanuel-Kant.pptx',btn:'Download →'})">
           <p class="resource-type">Lesson Planner</p>
@@ -408,15 +418,16 @@ function renderCards(data, gridId) {
       <div class="res-modal-type" id="modalType"></div>
       <h2 id="modalTitle"></h2>
       <div class="res-modal-divider"></div>
-      <img id="modalImg" src="" alt="" style="display:none;width:100%;max-height:400px;object-fit:contain;border-radius:2px;margin-bottom:20px;">
+      <img id="modalImg" src="" alt="" loading="lazy" style="display:none;width:100%;max-height:400px;object-fit:contain;border-radius:2px;margin-bottom:20px;">
       <p id="modalDesc"></p>
       <a id="modalBtn" class="btn" download>Download →</a>
     </div>
   </div>
 
+  </main>
   <footer class="site-footer">
-    <img src="images/esp-crest-color-transparent.png" alt="ESP" style="width:40px;height:auto;margin-bottom:10px;">
-    <p>&copy; 2024 Eastside Philosophy. All rights reserved.</p>
+    <img src="images/esp-crest-color-transparent.png" alt="ESP" loading="lazy" style="width:40px;height:auto;margin-bottom:10px;" width="80" height="99">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
     <p style="font-size:0.78rem;margin-top:6px;color:var(--warm-gray);">Eastside Philosophy is a registered 501(c)(3) nonprofit organization.</p>
   </footer>
 

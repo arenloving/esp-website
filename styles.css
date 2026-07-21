@@ -3,8 +3,6 @@
    Inspired by Johnathan Bi's classic aesthetic
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
-
 /* --- Reset & Base --- */
 *, *::before, *::after {
   margin: 0;
@@ -18,7 +16,7 @@
   --warm-black: #1A1A1A;
   --dark-brown: #2C2418;
   --muted-brown: #5C4F3D;
-  --warm-gray: #8A7E6B;
+  --warm-gray: #6B6153;
   --accent-gold: #B8976A;
   --light-border: #E0D8CC;
   --serif: 'Cormorant Garamond', 'Georgia', serif;

@@ -4,12 +4,22 @@
   <meta charset="UTF-8">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eastside Philosophy is a student-led nonprofit making philosophy accessible through lectures, interviews with university scholars, and a free resource library for high school students.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Eastside Philosophy">
+  <meta property="og:title" content="Eastside Philosophy">
+  <meta property="og:description" content="Eastside Philosophy is a student-led nonprofit making philosophy accessible through lectures, interviews with university scholars, and a free resource library for high school students.">
+  <meta property="og:url" content="https://eastsidephilosophy.org/">
+  <link rel="canonical" href="https://eastsidephilosophy.org/">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="preload" as="image" href="images/school-of-athens.jpg">
   <title>Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=76">
+  <link rel="stylesheet" href="styles.css?v=77">
   <style>
     /* Home-specific overrides for PLATO-style layout */
     .home-hero {
@@ -181,7 +191,7 @@
 
   <!-- Navigation -->
   <nav class="site-nav">
-    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</span>
+    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img" width="144" height="144">Eastside Philosophy</span>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -194,9 +204,10 @@
     </ul>
   </nav>
 
+  <main>
   <!-- Hero Banner -->
   <div class="home-hero">
-    <img src="images/school-of-athens.jpg" alt="The School of Athens by Raphael">
+    <img src="images/school-of-athens.jpg" alt="The School of Athens by Raphael" fetchpriority="high" width="1280" height="993">
     <div class="home-hero-content">
       <div class="hero-subtitle">Philosophy Learning and Community</div>
       <h1>Eastside Philosophy</h1>
@@ -212,7 +223,7 @@
       <p>Students are capable of far more than memorizing information, they're capable of thinking deeply, questioning meaningfully, and engaging with ideas that have shaped the world. Yet too often, education overlooks this potential.</p>
       <p>We exist to change that. We cultivate clear, rigorous thinking by exposing students to the central questions of philosophy and giving them the tools to reason, analyze, and articulate ideas with precision. We aim to make philosophy accessible, engaging, and intellectually serious, creating a space where students are encouraged to think and grow.</p>
       <div class="mission-image">
-        <img src="images/group-photo.jpg" alt="Eastside Philosophy group photo">
+        <img src="images/group-photo.jpg" alt="Eastside Philosophy group photo" loading="lazy" width="800" height="592">
         <p class="caption">Eastside Philosophy at International School</p>
       </div>
     </div>
@@ -225,14 +236,14 @@
     </div>
     <a href="lectures.html" class="offering-banner banner-lectures" style="background-image: url('images/death-of-socrates-hq.jpg');">
       <div class="banner-content">
-        <h4>Lectures</h4>
+        <h3>Lectures</h3>
         <p>Original lectures on philosophy, ethics, and other ideas.</p>
         <span class="banner-btn">View Lectures</span>
       </div>
     </a>
     <a href="interviews.html" class="offering-banner banner-interviews" style="background-image: url('images/school-of-athens.jpg');">
       <div class="banner-content">
-        <h4>Interviews</h4>
+        <h3>Interviews</h3>
         <p>Guest interviews and speaker events connecting students with scholars and professors.</p>
         <span class="banner-btn">View Interviews</span>
       </div>
@@ -240,7 +251,7 @@
 
     <a href="resources.html" class="offering-banner banner-resources" style="background-image: url('images/thomas-cole-crop.jpg');">
       <div class="banner-content">
-        <h4>Resource Library</h4>
+        <h3>Resource Library</h3>
         <p>A free library of lessons, slides, and materials to support independent learning.</p>
         <span class="banner-btn">Browse Resources</span>
       </div>
@@ -264,7 +275,7 @@
         <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.6rem; font-weight: 400; color: #2C2418; margin-bottom: 40px;">Guest Speakers</h2>
         <div class="slide-inner-flex" style="display: flex; gap: 40px; align-items: flex-start;">
           <div style="flex-shrink: 0;">
-            <img src="images/behrends-headshot.jpg" alt="Professor Jeff Behrends" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #E0D8CC;">
+            <img src="images/behrends-headshot.jpg" alt="Professor Jeff Behrends" loading="lazy" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #E0D8CC;" width="220" height="220">
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.6rem; font-weight: 500; color: #2C2418; margin-bottom: 4px;">Professor Jeff Behrends</h3>
@@ -281,7 +292,7 @@
         <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.6rem; font-weight: 400; color: #2C2418; margin-bottom: 40px;">Guest Speakers</h2>
         <div class="slide-inner-flex" style="display: flex; gap: 40px; align-items: flex-start;">
           <div style="flex-shrink: 0;">
-            <img src="images/erica-bigelow-headshot.jpg" alt="Erica Bigelow" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; object-position: center 25%; border: 3px solid #E0D8CC;">
+            <img src="images/erica-bigelow-headshot.jpg" alt="Erica Bigelow" loading="lazy" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; object-position: center 25%; border: 3px solid #E0D8CC;" width="400" height="400">
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.6rem; font-weight: 500; color: #2C2418; margin-bottom: 4px;">Erica Bigelow</h3>
@@ -485,10 +496,11 @@
     }
   </script>
 
+  </main>
   <!-- Footer -->
   <footer class="site-footer">
-    <img src="images/esp-crest-color-transparent.png" alt="ESP" style="width:40px;height:auto;margin-bottom:10px;">
-    <p>&copy; 2024 Eastside Philosophy. All rights reserved.</p>
+    <img src="images/esp-crest-color-transparent.png" alt="ESP" loading="lazy" style="width:40px;height:auto;margin-bottom:10px;" width="80" height="99">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
     <p style="font-size:0.78rem;margin-top:6px;color:var(--warm-gray);">Eastside Philosophy is a registered 501(c)(3) nonprofit organization.</p>
   </footer>
 

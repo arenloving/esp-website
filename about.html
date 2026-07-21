@@ -4,12 +4,21 @@
   <meta charset="UTF-8">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet the team behind Eastside Philosophy — a student-led 501(c)(3) nonprofit bringing philosophy to high school students across the Eastside.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Eastside Philosophy">
+  <meta property="og:title" content="About Us — Eastside Philosophy">
+  <meta property="og:description" content="Meet the team behind Eastside Philosophy — a student-led 501(c)(3) nonprofit bringing philosophy to high school students across the Eastside.">
+  <meta property="og:url" content="https://eastsidephilosophy.org/about.html">
+  <link rel="canonical" href="https://eastsidephilosophy.org/about.html">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap">
   <title>About Us — Eastside Philosophy</title>
-  <link rel="stylesheet" href="styles.css?v=76">
+  <link rel="stylesheet" href="styles.css?v=77">
   <style>
     /* Bio Modal */
     .bio-overlay {
@@ -201,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <!-- Navigation -->
   <nav class="site-nav">
-    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img">Eastside Philosophy</span>
+    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><img src="images/crest.png" alt="ESP" class="nav-logo-img" width="144" height="144">Eastside Philosophy</span>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -214,9 +223,10 @@ document.addEventListener('DOMContentLoaded', function() {
     </ul>
   </nav>
 
+  <main>
   <!-- Page Header -->
   <div class="page-header">
-    <h1 style="display: inline-flex; align-items: center; gap: 20px; justify-content: center;"><img src="images/esp-crest-color-transparent.png" alt="Eastside Philosophy Crest" style="width: 80px; height: auto;"> About Us</h1>
+    <h1 style="display: inline-flex; align-items: center; gap: 20px; justify-content: center;"><img src="images/esp-crest-color-transparent.png" alt="Eastside Philosophy Crest" loading="lazy" style="width: 80px; height: auto;" width="80" height="99"> About Us</h1>
   </div>
 
   <div class="page-container">
@@ -235,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('aren')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/aren.jpg" alt="Aren Loving">
+            <img src="images/aren.jpg" alt="Aren Loving" loading="lazy" width="400" height="500">
           </div>
           </div>
           <h3>Aren Loving</h3>
@@ -244,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('jeffery')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/jeffery.jpg" alt="Jeffery Lou">
+            <img src="images/jeffery.jpg" alt="Jeffery Lou" loading="lazy" width="400" height="500">
           </div>
           </div>
           <h3>Jeffery Lou</h3>
@@ -253,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('hennry')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/hennry.jpg?v=2" alt="Hennry Lou">
+            <img src="images/hennry.jpg?v=2" alt="Hennry Lou" loading="lazy" width="400" height="500">
           </div>
           </div>
           <h3>Hennry Lou</h3>
@@ -262,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('gregoire')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/gregoire.jpg" alt="Gregoire Keene">
+            <img src="images/gregoire.jpg" alt="Gregoire Keene" loading="lazy" width="400" height="477">
           </div>
           </div>
           <h3>Gregoire Keene</h3>
@@ -271,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('lucas')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/lucas.jpg" alt="Lucas Ma" style="object-position: center center;">
+            <img src="images/lucas.jpg" alt="Lucas Ma" loading="lazy" style="object-position: center center;" width="400" height="533">
           </div>
           </div>
           <h3>Lucas Ma</h3>
@@ -288,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('jason')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/jason.jpg" alt="Jason Cheng">
+            <img src="images/jason.jpg" alt="Jason Cheng" loading="lazy" width="200" height="200">
           </div>
           </div>
           <h3>Jason Cheng</h3>
@@ -297,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('vivian')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/vivian.jpg" alt="Vivian Cayetano">
+            <img src="images/vivian.jpg" alt="Vivian Cayetano" loading="lazy" width="164" height="249">
           </div>
           </div>
           <h3>Vivian Cayetano</h3>
@@ -306,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('max')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/max.jpg" alt="Max Nichols">
+            <img src="images/max.jpg" alt="Max Nichols" loading="lazy" width="200" height="200">
           </div>
           </div>
           <h3>Max Nichols</h3>
@@ -315,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('sophia')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/sophia.jpg" alt="Sophia Elkhamri">
+            <img src="images/sophia.jpg" alt="Sophia Elkhamri" loading="lazy" width="202" height="206">
           </div>
           </div>
           <h3>Sophia Elkhamri</h3>
@@ -332,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('lucas')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/lucas.jpg" alt="Lucas Ma" style="object-position: center center;">
+            <img src="images/lucas.jpg" alt="Lucas Ma" loading="lazy" style="object-position: center center;" width="400" height="533">
           </div>
           </div>
           <h3>Lucas Ma</h3>
@@ -341,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('hennry')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/hennry.jpg?v=2" alt="Hennry Lou">
+            <img src="images/hennry.jpg?v=2" alt="Hennry Lou" loading="lazy" width="400" height="500">
           </div>
           </div>
           <h3>Hennry Lou</h3>
@@ -350,7 +360,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('evan')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/evan.jpg" alt="Evan Lee">
+            <img src="images/evan.jpg" alt="Evan Lee" loading="lazy" width="400" height="500">
           </div>
           </div>
           <h3>Evan Lee</h3>
@@ -359,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('abhi')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/abhi.jpg" alt="Abhi Vasudeva">
+            <img src="images/abhi.jpg" alt="Abhi Vasudeva" loading="lazy" width="215" height="282">
           </div>
           </div>
           <h3>Abhi Vasudeva</h3>
@@ -368,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('max')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/max.jpg" alt="Max Nichols">
+            <img src="images/max.jpg" alt="Max Nichols" loading="lazy" width="200" height="200">
           </div>
           </div>
           <h3>Max Nichols</h3>
@@ -377,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="team-card" onclick="openBio('siddharth')">
           <div class="team-avatar-wrap"><div class="team-avatar">
-            <img src="images/siddharth.jpg" alt="Siddharth Vasudeva">
+            <img src="images/siddharth.jpg" alt="Siddharth Vasudeva" loading="lazy" width="329" height="410">
           </div>
           </div>
           <h3>Siddharth Vasudeva</h3>
@@ -399,9 +409,10 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 
+  </main>
   <footer class="site-footer">
-    <img src="images/esp-crest-color-transparent.png" alt="ESP" style="width:40px;height:auto;margin-bottom:10px;">
-    <p>&copy; 2024 Eastside Philosophy. All rights reserved.</p>
+    <img src="images/esp-crest-color-transparent.png" alt="ESP" loading="lazy" style="width:40px;height:auto;margin-bottom:10px;" width="80" height="99">
+    <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
     <p style="font-size:0.78rem;margin-top:6px;color:var(--warm-gray);">Eastside Philosophy is a registered 501(c)(3) nonprofit organization.</p>
   </footer>
 

@@ -2,5 +2,4 @@
   <rect width="400" height="500" fill="#F5F0EA"/>
   <circle cx="200" cy="185" r="70" fill="#D8CDBC"/>
   <path d="M60 460 C60 360 140 330 200 330 C260 330 340 360 340 460 L340 500 L60 500 Z" fill="#D8CDBC"/>
-  <text x="200" y="208" text-anchor="middle" font-family="Georgia, serif" font-size="56" fill="#5C4F3D">RP</text>
 </svg>

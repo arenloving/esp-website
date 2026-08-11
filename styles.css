@@ -815,3 +815,8 @@ p {
     gap: 24px;
   }
 }
+
+/* Placeholder tint while lazy images load (prevents white flash) */
+img[loading="lazy"][src$=".jpg"] {
+  background-color: var(--cream);
+}

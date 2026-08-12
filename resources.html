@@ -5,12 +5,12 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free philosophy presentations, worksheets, and teaching resources from Eastside Philosophy — covering ethics, metaphysics, logic, epistemology, and political philosophy.">
+  <meta name="description" content="Free philosophy presentations and teaching resources from Eastside Philosophy — covering ethics, metaphysics, logic, epistemology, and political philosophy.">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Eastside Philosophy">
   <meta property="og:title" content="Resource Library — Eastside Philosophy">
-  <meta property="og:description" content="Free philosophy presentations, worksheets, and teaching resources from Eastside Philosophy — covering ethics, metaphysics, logic, epistemology, and political philosophy.">
+  <meta property="og:description" content="Free philosophy presentations and teaching resources from Eastside Philosophy — covering ethics, metaphysics, logic, epistemology, and political philosophy.">
   <meta property="og:url" content="https://eastsidephilosophy.org/resources">
   <meta property="og:image" content="https://eastsidephilosophy.org/images/school-of-athens.jpg">
   <meta property="og:image:width" content="1280">
@@ -254,19 +254,6 @@ var resources = [
   { type: 'Presentation — Philosophy Club, International School', title: 'Bases of Political Philosophy: Democracy', desc: 'A breakdown of democratic principles from ancient Athens to modern governance. Covers popular sovereignty, political equality, accountability, effectiveness, and a corruption index comparison across democratic states.', file: 'Political-Philosophy.pptx', btn: 'Download →' }
 ];
 
-var foundations = [
-  { type: 'Worksheet 1', title: 'What Is Philosophy?', desc: 'An introduction to the discipline of philosophy: what it is, why it matters, and how philosophical thinking differs from other forms of inquiry.', file: 'worksheets/Worksheet_01_What_Is_Philosophy.docx', btn: 'Download →' },
-  { type: 'Worksheet 2', title: 'Critical Thinking & The Socratic Method', desc: 'An exploration of critical thinking as a philosophical practice, including the Socratic method of questioning and its application to everyday reasoning.', file: 'worksheets/Worksheet_02_Critical_Thinking_and_The_Socratic_Method.docx', btn: 'Download →' },
-  { type: 'Worksheet 3', title: 'Logic: Deduction & Validity', desc: 'An introduction to deductive reasoning, valid and invalid argument forms, and the structure of logical proofs.', file: 'worksheets/Worksheet_03_Logic_Deduction_and_Validity.docx', btn: 'Download →' },
-  { type: 'Worksheet 4', title: 'Logic: Induction & Fallacies', desc: 'An exploration of inductive reasoning, common logical fallacies, and how to identify flawed arguments.', file: 'worksheets/Worksheet_04_Logic_Induction_and_Fallacies.docx', btn: 'Download →' },
-  { type: 'Worksheet 5', title: 'Rhetoric & Argumentation', desc: 'The art of persuasion and argumentation. How to construct compelling arguments and recognize rhetorical strategies.', file: 'worksheets/Worksheet_05_Rhetoric_and_Argumentation.docx', btn: 'Download →' },
-  { type: 'Worksheet 6', title: 'What Is Knowledge? (Epistemology)', desc: 'An introduction to epistemology: the study of knowledge, belief, justification, and the limits of what we can know.', file: 'worksheets/Worksheet_06_What_Is_Knowledge_Epistemology.docx', btn: 'Download →' },
-  { type: 'Worksheet 7', title: 'What Is Reality? (Metaphysics)', desc: 'An exploration of metaphysical questions about the nature of reality, existence, and what it means for something to be real.', file: 'worksheets/Worksheet_07_What_Is_Reality_Metaphysics.docx', btn: 'Download →' },
-  { type: 'Worksheet 8', title: 'What Is the Self?', desc: 'A philosophical investigation into personal identity, consciousness, and the nature of the self across time.', file: 'worksheets/Worksheet_08_What_Is_the_Self.docx', btn: 'Download →' },
-  { type: 'Worksheet 9', title: 'What Is Right & Wrong? (Ethics)', desc: 'An introduction to ethical theory: exploring moral frameworks from utilitarianism to deontology and virtue ethics.', file: 'worksheets/Worksheet_09_What_Is_Right_and_Wrong_Ethics.docx', btn: 'Download →' },
-  { type: 'Worksheet 10', title: 'What Is a Just Society? (Political Philosophy)', desc: 'An exploration of political philosophy: justice, rights, the social contract, and what makes a society fair.', file: 'worksheets/Worksheet_10_What_Is_a_Just_Society_Political_Philosophy.docx', btn: 'Download →' }
-];
-
 
 function openDrawer(d) {
   document.getElementById('modalType').textContent = d.type;
@@ -392,11 +379,6 @@ function renderCards(data, gridId) {
       <h2 class="section-label">Presentations</h2>
       <div class="resource-grid" id="presGrid"></div>
     </div>
-    <div class="section">
-      <h2 class="section-label">Foundations of Philosophy</h2>
-      <p style="font-size: 1.05rem; line-height: 1.7; color: #5C4F3D; margin-bottom: 24px;">A 10-part self-guided worksheet series covering the fundamentals of philosophical thinking.</p>
-      <div class="resource-grid" id="foundationsGrid"></div>
-    </div>
 
     <div class="section">
       <h2 class="section-label">Student Writings</h2>
@@ -464,7 +446,6 @@ function renderCards(data, gridId) {
 
   <script>
     renderCards(resources, 'presGrid');
-    renderCards(foundations, 'foundationsGrid');
 
   </script>
   <script src="animations.js?v=11"></script>

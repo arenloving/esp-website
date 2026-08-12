@@ -245,7 +245,97 @@ document.addEventListener('DOMContentLoaded', function() {
       <p style="font-size: 1.2rem; line-height: 1.85; color: #5C4F3D; text-align: left;">Eastside Philosophy is a student-led organization built on the belief that philosophy belongs in every classroom. We are a group of high school students from across the Eastside who are committed to making philosophy accessible, rigorous, and relevant. Through lectures, interviews with leading academics, and a growing resource library, we work to bring the foundational questions of human life into spaces where students can engage with them seriously. Our chapters span multiple schools, and our mission is simple: to help students think clearly, argue well, and engage with the ideas that have shaped the world.</p>
     </div>
 
-
+    <!-- Impact Stats -->
+    <div class="section impact-stats" id="impactStats">
+      <div class="impact-stat">
+        <span class="impact-number"><span class="impact-count" data-target="20000" data-suffix="+">0</span></span>
+        <span class="impact-label">Reached Online</span>
+      </div>
+      <div class="impact-divider" aria-hidden="true"></div>
+      <div class="impact-stat">
+        <span class="impact-number"><span class="impact-count" data-target="600" data-suffix="+">0</span></span>
+        <span class="impact-label">Students Reached In Person</span>
+      </div>
+    </div>
+    <style>
+      .impact-stats {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 56px;
+        padding: 36px 24px;
+        background: #F5F0EA;
+        border-top: 1px solid rgba(184, 151, 106, 0.35);
+        border-bottom: 1px solid rgba(184, 151, 106, 0.35);
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .impact-stats.visible { opacity: 1; transform: translateY(0); }
+      .impact-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        text-align: center;
+      }
+      .impact-number {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 3rem;
+        font-weight: 600;
+        color: #2C2418;
+        line-height: 1.1;
+      }
+      .impact-label {
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #B8976A;
+        font-weight: 600;
+      }
+      .impact-divider { width: 1px; background: rgba(184, 151, 106, 0.4); }
+      @media (max-width: 600px) {
+        .impact-stats { flex-direction: column; gap: 28px; }
+        .impact-divider { width: 60px; height: 1px; margin: 0 auto; }
+      }
+    </style>
+    <script>
+      (function () {
+        var stats = document.getElementById('impactStats');
+        if (!stats) return;
+        var animated = false;
+        function animateCounts() {
+          stats.querySelectorAll('.impact-count').forEach(function (el) {
+            var target = parseInt(el.getAttribute('data-target'), 10);
+            var suffix = el.getAttribute('data-suffix') || '';
+            var duration = 1800;
+            var start = null;
+            function step(ts) {
+              if (!start) start = ts;
+              var p = Math.min((ts - start) / duration, 1);
+              var eased = 1 - Math.pow(1 - p, 3);
+              el.textContent = Math.round(target * eased).toLocaleString() + (p === 1 ? suffix : '');
+              if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          });
+        }
+        function reveal() {
+          if (animated) return;
+          animated = true;
+          stats.classList.add('visible');
+          animateCounts();
+        }
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { reveal(); io.disconnect(); } });
+          }, { threshold: 0.3 });
+          io.observe(stats);
+        } else {
+          reveal();
+        }
+      })();
+    </script>
 
     <!-- Executive Team -->
     <div class="section">

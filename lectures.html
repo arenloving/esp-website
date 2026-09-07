@@ -23,6 +23,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap">
   <title>Lectures — Eastside Philosophy</title>
   <link rel="stylesheet" href="styles.css?v=78">
+<style>
+.sort-toggle[hidden]{display:none}
+.sort-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;isolation:isolate;border:1px solid var(--light-border);border-radius:10px;background:transparent;padding:4px;margin:12px 0 28px;font-family:var(--sans)}
+.sort-tab{position:relative;z-index:1;background:transparent;border:0;padding:0 14px;height:32px;font:600 13px var(--sans);color:var(--warm-gray);cursor:pointer;border-radius:7px}
+.sort-tab[aria-pressed="true"]{color:var(--dark-brown)}
+.sort-tab:focus-visible{outline:2px solid var(--dark-brown);outline-offset:2px}
+.sort-indicator{position:absolute;z-index:0;top:4px;left:4px;height:calc(100% - 8px);width:calc(50% - 4px);background:var(--light-border);border-radius:7px;transition:transform .2s ease;pointer-events:none}
+.sort-toggle[data-active="1"] .sort-indicator{transform:translateX(100%)}
+@media(prefers-reduced-motion:reduce){.sort-indicator{transition:none}}
+</style>
 </head>
 <body>
 <script>
@@ -64,6 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <div class="page-container wide">
     <h2 class="section-label">Lecture Archive</h2>
+
+    <div class="sort-toggle" role="group" aria-label="Sort lectures" hidden>
+      <button type="button" id="sort-top" aria-pressed="true" aria-controls="lectures-list" class="sort-tab">Top</button>
+      <button type="button" id="sort-latest" aria-pressed="false" aria-controls="lectures-list" class="sort-tab">Latest</button>
+      <span class="sort-indicator" aria-hidden="true"></span>
+    </div>
+
+<div id="lectures-list" class="lectures-list">
 
     <!-- Online Lecture - Why Something Rather Than Nothing -->
     <div class="section">
@@ -179,8 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     </div>
 
-
-
+  </div>
   </div>
 
   </main>
@@ -191,5 +208,46 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
   <script src="animations.js?v=11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var list = document.getElementById('lectures-list');
+  var toggle = document.querySelector('.sort-toggle');
+  var buttons = [document.getElementById('sort-top'), document.getElementById('sort-latest')];
+  // Top keeps the page's editorial order; Latest sorts by the displayed date.
+  var featured = Array.from(list.children).filter(function (el) { return el.classList.contains('section'); });
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function dateValue(el) {
+    var date = el.querySelector('.date');
+    var match = date && date.textContent.match(/([A-Za-z]+) (\d{1,2}), (\d{4})/);
+    if (!match || months.indexOf(match[1]) < 0) return -Infinity;
+    return Date.UTC(Number(match[3]), months.indexOf(match[1]), Number(match[2]));
+  }
+  var latest = featured.slice().sort(function (a, b) {
+    var da = dateValue(a), db = dateValue(b);
+    return da === db ? featured.indexOf(a) - featured.indexOf(b) : (da > db ? -1 : 1);
+  });
+  function select(index) {
+    (index === 0 ? featured : latest).forEach(function (el) { list.appendChild(el); });
+    buttons.forEach(function (button, i) { button.setAttribute('aria-pressed', String(i === index)); });
+    toggle.dataset.active = String(index);
+  }
+  buttons.forEach(function (button, index) {
+    button.addEventListener('click', function () { select(index); });
+    button.addEventListener('keydown', function (event) {
+      var next;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') next = 1 - index;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = 1;
+      else return;
+      event.preventDefault();
+      buttons[next].focus();
+      select(next);
+    });
+  });
+  toggle.hidden = false;
+  select(0);
+});
+</script>
+
 </body>
 </html>

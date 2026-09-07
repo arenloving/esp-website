@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <!-- Navigation -->
   <nav class="site-nav">
-    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><picture><source srcset="images/crest.png.webp" type="image/webp"><img src="images/crest.png" alt="ESP" class="nav-logo-img" width="144" height="144"></picture>Eastside Philosophy</span>
+    <span class="nav-logo" style="cursor:default;color:#F5F0EA;pointer-events:none;text-decoration:none;"><picture><source srcset="images/crest.png.webp" type="image/webp"><img src="images/crest.png" alt="ESP" class="nav-logo-img" width="144" height="144" decoding="async"></picture>Eastside Philosophy</span>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="section">
       <div class="lecture-card">
         <div class="lecture-images stacked">
-          <picture><source srcset="images/ai-showcase-2026-1.jpg.webp" type="image/webp" loading="lazy"><img src="images/ai-showcase-2026-1.jpg" alt="AI Showcase 2026 — intro slide, Pope Leo XIV encyclical on AI"  width="1000" height="1333"></picture>
-          <picture><source srcset="images/ai-showcase-2026-2.jpg.webp" type="image/webp" loading="lazy"><img src="images/ai-showcase-2026-2.jpg" alt="AI Showcase 2026 — Modern LLMs slide with audience" loading="lazy" width="1000" height="750"></picture>
+          <picture><source srcset="images/ai-showcase-2026-1.jpg.webp" type="image/webp"><img src="images/ai-showcase-2026-1.jpg" alt="AI Showcase 2026 — intro slide, Pope Leo XIV encyclical on AI"  width="1000" height="1333" decoding="async"></picture>
+          <picture><source srcset="images/ai-showcase-2026-2.jpg.webp" type="image/webp"><img src="images/ai-showcase-2026-2.jpg" alt="AI Showcase 2026 — Modern LLMs slide with audience" width="1000" height="750" decoding="async"></picture>
         </div>
         <div class="lecture-info">
           <p class="date">June 9, 2026</p>
@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="section">
       <div class="lecture-card">
         <div class="lecture-images stacked">
-          <picture><source srcset="images/lecture-wide.jpg.webp" type="image/webp" loading="lazy"><img src="images/lecture-wide.jpg" alt="STEM Fair presentation — wide audience view" loading="lazy" width="1200" height="900"></picture>
-          <picture><source srcset="images/lecture-speaker.jpg.webp" type="image/webp" loading="lazy"><img src="images/lecture-speaker.jpg?v=2" alt="STEM Fair presentation — speaker on stage" loading="lazy" width="590" height="526"></picture>
+          <picture><source srcset="images/lecture-wide.jpg.webp" type="image/webp"><img src="images/lecture-wide.jpg" alt="STEM Fair presentation — wide audience view" width="1200" height="900" decoding="async"></picture>
+          <picture><source srcset="images/lecture-speaker.jpg.webp" type="image/webp"><img src="images/lecture-speaker.jpg?v=2" alt="STEM Fair presentation — speaker on stage" width="590" height="526" decoding="async"></picture>
         </div>
         <div class="lecture-info">
           <p class="date">June 5, 2025</p>
@@ -110,8 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="section">
       <div class="lecture-card">
         <div class="lecture-images stacked">
-          <picture><source srcset="images/camus-lecture-1.jpg.webp" type="image/webp" loading="lazy"><img src="images/camus-lecture-1.jpg" alt="Camus lecture — classroom presentation" loading="lazy" width="641" height="481"></picture>
-          <picture><source srcset="images/camus-lecture-2.jpg.webp" type="image/webp" loading="lazy"><img src="images/camus-lecture-2.jpg" alt="Camus lecture — Yearning for Unity slide" loading="lazy" width="641" height="481"></picture>
+          <picture><source srcset="images/camus-lecture-1.jpg.webp" type="image/webp"><img src="images/camus-lecture-1.jpg" alt="Camus lecture — classroom presentation" width="641" height="481" decoding="async"></picture>
+          <picture><source srcset="images/camus-lecture-2.jpg.webp" type="image/webp"><img src="images/camus-lecture-2.jpg" alt="Camus lecture — Yearning for Unity slide" width="641" height="481" decoding="async"></picture>
         </div>
         <div class="lecture-info">
           <p class="date">March 16, 2026</p>
@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="section">
       <div class="lecture-card">
         <div class="lecture-images stacked">
-          <picture><source srcset="images/kant-lecture-1.jpg.webp" type="image/webp" loading="lazy"><img src="images/kant-lecture-1.jpg" alt="Kant lecture — presenter at board" loading="lazy" width="1179" height="1051"></picture>
-          <picture><source srcset="images/kant-lecture-2.jpg.webp" type="image/webp" loading="lazy"><img src="images/kant-lecture-2.jpg" alt="Kant lecture — full classroom view" loading="lazy" width="1179" height="874"></picture>
+          <picture><source srcset="images/kant-lecture-1.jpg.webp" type="image/webp"><img src="images/kant-lecture-1.jpg" alt="Kant lecture — presenter at board" width="1179" height="1051" decoding="async"></picture>
+          <picture><source srcset="images/kant-lecture-2.jpg.webp" type="image/webp"><img src="images/kant-lecture-2.jpg" alt="Kant lecture — full classroom view" width="1179" height="874" decoding="async"></picture>
         </div>
         <div class="lecture-info">
           <p class="date">March 23, 2025</p>
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </main>
   <footer class="site-footer">
-    <picture><source srcset="images/esp-crest-color-transparent.png.webp" type="image/webp" loading="lazy"><img src="images/esp-crest-color-transparent.png" alt="ESP" loading="lazy" style="width:40px;height:auto;margin-bottom:10px;" width="80" height="99"></picture>
+    <picture><source srcset="images/esp-crest-color-transparent.png.webp" type="image/webp"><img src="images/esp-crest-color-transparent.png" alt="ESP" style="width:40px;height:auto;margin-bottom:10px;" width="80" height="99" decoding="async"></picture>
     <p>&copy; 2025 Eastside Philosophy. All rights reserved.</p>
     <p style="font-size:0.78rem;margin-top:6px;color:var(--warm-gray);">Eastside Philosophy is a registered 501(c)(3) nonprofit organization.</p>
   </footer>

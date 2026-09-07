@@ -23,6 +23,19 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap">
   <title>Interviews — Eastside Philosophy</title>
   <link rel="stylesheet" href="styles.css?v=78">
+
+<style>
+.sort-toggle[hidden]{display:none}
+.sort-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;isolation:isolate;border:1px solid var(--light-border);border-radius:999px;background:var(--ivory);padding:4px;margin:16px 0 8px;font-family:var(--sans)}
+.sort-tab{position:relative;z-index:1;background:transparent;border:0;padding:10px 22px;min-height:44px;font:600 .9rem var(--sans);color:var(--muted-brown);cursor:pointer;border-radius:999px}
+.sort-tab[aria-pressed="true"]{color:var(--dark-brown)}
+.sort-tab:focus-visible{outline:2px solid var(--dark-brown);outline-offset:2px}
+.sort-indicator{position:absolute;z-index:0;top:4px;left:4px;height:calc(100% - 8px);width:calc(50% - 4px);background:var(--cream);border-radius:999px;box-shadow:0 1px 4px #2c24181a;transition:transform .25s ease;pointer-events:none}
+.sort-toggle[data-active="1"] .sort-indicator{transform:translateX(100%)}
+.sort-note{font-size:.8rem;color:var(--muted-brown);margin:0 0 24px}
+@media(prefers-reduced-motion:reduce){.sort-indicator{transition:none}}
+</style>
+
 </head>
 <body>
 <script>
@@ -66,7 +79,16 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="page-container wide">
     <h2 class="section-label">Scholar Conversations</h2>
 
-    <!-- Interview 1 -->
+    
+    <div class="sort-toggle" role="group" aria-label="Sort interviews" hidden>
+      <button type="button" id="sort-latest" aria-pressed="true" aria-controls="interviews-list" class="sort-tab">Recent</button>
+      <button type="button" id="sort-top" aria-pressed="false" aria-controls="interviews-list" class="sort-tab">Top</button>
+      <span class="sort-indicator" aria-hidden="true"></span>
+    </div>
+    <p id="sort-note" class="sort-note" aria-live="polite" hidden></p>
+
+<div id="interviews-list" class="interviews-list">
+<!-- Interview 1 -->
     <div class="section">
       <div class="lecture-card">
         <div class="lecture-images stacked">
@@ -218,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
   </div>
+  </div>
 
   </main>
   <footer class="site-footer">
@@ -227,5 +250,50 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
   <script src="animations.js?v=11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var list = document.getElementById('interviews-list');
+  var toggle = document.querySelector('.sort-toggle');
+  var note = document.getElementById('sort-note');
+  var buttons = [document.getElementById('sort-latest'), document.getElementById('sort-top')];
+  // Top retains the site's existing editorial order, not an invented popularity score.
+  var featured = Array.from(list.children).filter(function (el) { return el.classList.contains('section'); });
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function dateValue(el) {
+    var date = el.querySelector('.date');
+    var match = date && date.textContent.match(/([A-Za-z]+) (\d{1,2}), (\d{4})/);
+    if (!match || months.indexOf(match[1]) < 0) return -Infinity;
+    return Date.UTC(Number(match[3]), months.indexOf(match[1]), Number(match[2]));
+  }
+  var latest = featured.slice().sort(function (a, b) {
+    var da = dateValue(a), db = dateValue(b);
+    return da === db ? featured.indexOf(a) - featured.indexOf(b) : (da > db ? -1 : 1);
+  });
+  function select(index) {
+    (index === 0 ? latest : featured).forEach(function (el) { list.appendChild(el); });
+    buttons.forEach(function (button, i) { button.setAttribute('aria-pressed', String(i === index)); });
+    toggle.dataset.active = String(index);
+    note.textContent = index === 0 ? 'Newest interviews first.' : 'Top: featured order, not ranked by views.';
+  }
+  buttons.forEach(function (button, index) {
+    button.addEventListener('click', function () { select(index); });
+    button.addEventListener('keydown', function (event) {
+      var next;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') next = 1 - index;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = 1;
+      else return;
+      event.preventDefault();
+      buttons[next].focus();
+      select(next);
+    });
+  });
+  toggle.hidden = false;
+  note.hidden = false;
+  select(0);
+});
+</script>
+
 </body>
 </html>

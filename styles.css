@@ -165,6 +165,33 @@ a.nav-logo:hover,
   color: #fff;
 }
 
+/* Discord icon in nav */
+.nav-links a.nav-discord {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin-left: -8px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  color: rgba(245, 240, 234, 0.75);
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.nav-links a.nav-discord svg { width: 20px; height: 20px; display: block; }
+.nav-links a.nav-discord::after { display: none; }
+.nav-links a.nav-discord:hover,
+.nav-links a.nav-discord:focus-visible {
+  color: #fff;
+  transform: scale(1.18);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(184, 151, 106, 0.25);
+}
+@media (max-width: 768px) {
+  .nav-links a.nav-discord { margin-left: 0; }
+}
+
 /* Nav Dropdown */
 .nav-dropdown {
   position: relative;

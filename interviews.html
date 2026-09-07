@@ -26,13 +26,12 @@
 
 <style>
 .sort-toggle[hidden]{display:none}
-.sort-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;isolation:isolate;border:1px solid var(--light-border);border-radius:999px;background:var(--ivory);padding:4px;margin:16px 0 8px;font-family:var(--sans)}
-.sort-tab{position:relative;z-index:1;background:transparent;border:0;padding:10px 22px;min-height:44px;font:600 .9rem var(--sans);color:var(--muted-brown);cursor:pointer;border-radius:999px}
+.sort-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;isolation:isolate;border:1px solid var(--light-border);border-radius:10px;background:transparent;padding:4px;margin:12px 0 28px;font-family:var(--sans)}
+.sort-tab{position:relative;z-index:1;background:transparent;border:0;padding:0 14px;height:32px;font:600 13px var(--sans);color:var(--warm-gray);cursor:pointer;border-radius:7px}
 .sort-tab[aria-pressed="true"]{color:var(--dark-brown)}
 .sort-tab:focus-visible{outline:2px solid var(--dark-brown);outline-offset:2px}
-.sort-indicator{position:absolute;z-index:0;top:4px;left:4px;height:calc(100% - 8px);width:calc(50% - 4px);background:var(--cream);border-radius:999px;box-shadow:0 1px 4px #2c24181a;transition:transform .25s ease;pointer-events:none}
+.sort-indicator{position:absolute;z-index:0;top:4px;left:4px;height:calc(100% - 8px);width:calc(50% - 4px);background:var(--light-border);border-radius:7px;transition:transform .2s ease;pointer-events:none}
 .sort-toggle[data-active="1"] .sort-indicator{transform:translateX(100%)}
-.sort-note{font-size:.8rem;color:var(--muted-brown);margin:0 0 24px}
 @media(prefers-reduced-motion:reduce){.sort-indicator{transition:none}}
 </style>
 
@@ -81,11 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     <div class="sort-toggle" role="group" aria-label="Sort interviews" hidden>
-      <button type="button" id="sort-latest" aria-pressed="true" aria-controls="interviews-list" class="sort-tab">Recent</button>
+      <button type="button" id="sort-latest" aria-pressed="true" aria-controls="interviews-list" class="sort-tab">Latest</button>
       <button type="button" id="sort-top" aria-pressed="false" aria-controls="interviews-list" class="sort-tab">Top</button>
       <span class="sort-indicator" aria-hidden="true"></span>
     </div>
-    <p id="sort-note" class="sort-note" aria-live="polite" hidden></p>
 
 <div id="interviews-list" class="interviews-list">
 <!-- Interview 1 -->
@@ -255,7 +253,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function () {
   var list = document.getElementById('interviews-list');
   var toggle = document.querySelector('.sort-toggle');
-  var note = document.getElementById('sort-note');
   var buttons = [document.getElementById('sort-latest'), document.getElementById('sort-top')];
   // Top retains the site's existing editorial order, not an invented popularity score.
   var featured = Array.from(list.children).filter(function (el) { return el.classList.contains('section'); });
@@ -274,7 +271,6 @@ document.addEventListener('DOMContentLoaded', function () {
     (index === 0 ? latest : featured).forEach(function (el) { list.appendChild(el); });
     buttons.forEach(function (button, i) { button.setAttribute('aria-pressed', String(i === index)); });
     toggle.dataset.active = String(index);
-    note.textContent = index === 0 ? 'Newest interviews first.' : 'Top: featured order, not ranked by views.';
   }
   buttons.forEach(function (button, index) {
     button.addEventListener('click', function () { select(index); });
@@ -290,7 +286,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   toggle.hidden = false;
-  note.hidden = false;
   select(0);
 });
 </script>

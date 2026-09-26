@@ -470,6 +470,41 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     </div>
 
+    <!-- Kyrgyzstan Team -->
+    <div class="section" id="kyrgyzstan-team">
+      <h2 class="team-section-title">Kyrgyzstan Team</h2>
+      <div class="team-grid">
+        <div class="team-card" onclick="openBio('aknar')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <picture><source srcset="images/aknar.jpg.webp" type="image/webp"><img src="images/aknar.jpg" alt="Aknar" loading="lazy" width="1300" height="1544"></picture>
+          </div></div>
+          <h3>Aknar</h3>
+          <p class="role">Chapter President</p>
+        </div>
+        <div class="team-card" onclick="openBio('arlen')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <picture><source srcset="images/arlen.jpg.webp" type="image/webp"><img src="images/arlen.jpg" alt="Arlen Makhmutov" loading="lazy" width="640" height="640"></picture>
+          </div></div>
+          <h3>Arlen Makhmutov</h3>
+          <p class="role">Academic Lead &amp; Research Coordinator</p>
+        </div>
+        <div class="team-card" onclick="openBio('abdulaziz')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <picture><source srcset="images/abdulaziz.jpg.webp" type="image/webp"><img src="images/abdulaziz.jpg" alt="Abdul Aziz Abdykarov" loading="lazy" width="744" height="1217"></picture>
+          </div></div>
+          <h3>Abdul Aziz Abdykarov</h3>
+          <p class="role">Event Coordinator</p>
+        </div>
+        <div class="team-card" onclick="openBio('akinai')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <picture><source srcset="images/akinai.jpg.webp" type="image/webp"><img src="images/akinai.jpg" alt="Akinai Iskitova" loading="lazy" width="960" height="1280"></picture>
+          </div></div>
+          <h3>Akinai Iskitova</h3>
+          <p class="role">Communications Coordinator</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Outreach Team -->
     <div class="section">
       <h2 class="team-section-title">Outreach</h2>
@@ -562,6 +597,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <script>
     const bios = {
+      aknar: {"name": "Aknar", "role": "Chapter President", "bio": "Aknar is an 11th-grade student from Bishkek with a deep interest in both technology and human thought. She actively studies robotics and programming, balancing her technical pursuits with an exploration of philosophy, focusing specifically on ethics and the philosophy of religion. She excels in organizational leadership, technical problem-solving, and conceptual analysis."},
+      arlen: {"name": "Arlen Makhmutov", "role": "Academic Lead & Research Coordinator", "bio": "Arlen is a student who demonstrates a profound commitment to academic and technological innovation. He focuses deeply on international law, with a specialized interest in Public International Law, examining the legal frameworks that govern global affairs. Alongside his legal pursuits, Arlen is an active MUN participant who also explores the cutting edge of technology, engaging with AI architectures and vibecoding. He excels in analytical thinking, technical system design, and structured debate."},
+      abdulaziz: {"name": "Abdul Aziz Abdykarov", "role": "Event Coordinator", "bio": "Abdul Aziz is a 9th grade student from Bishkek who actively coordinates events and volunteer initiatives. As an experienced Model United Nations (MUN) participant, he helps organize student activities and community projects. His academic interests focus on history and philosophy, which he balances with a passion for sports and a healthy lifestyle. He excels in language studies, project organization, and structured debate."},
+      akinai: {"name": "Akinai Iskitova", "role": "Communications Coordinator", "bio": "Akinai is an 11th grade student from Bishkek who helps coordinate content and youth initiatives. An active Model United Nations (MUN) participant, she uses the platform to explore philosophical themes such as ethics, global justice, and international cooperation. She is passionate about creating educational content and working on projects that encourage critical thinking and discussions among peers. Looking ahead, Akinai is interested in business analytics and aims to leverage data and technology to address real-world challenges."},
       aren: {
         name: 'Aren Loving',
         role: 'President',

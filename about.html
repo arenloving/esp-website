@@ -505,6 +505,41 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     </div>
 
+    <!-- New York (Jericho High School) -->
+    <div class="section" id="new-york-jericho">
+      <h2 class="team-section-title">New York (Jericho High School)</h2>
+      <div class="team-grid">
+        <div class="team-card" onclick="openBio('vihaan')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <picture><source srcset="images/vihaan.jpg.webp" type="image/webp"><img src="images/vihaan.jpg" alt="Vihaan Kaushik" loading="lazy" width="707" height="492"></picture>
+          </div></div>
+          <h3>Vihaan Kaushik</h3>
+          <p class="role">President</p>
+        </div>
+        <div class="team-card" onclick="openBio('nicholas')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <picture><source srcset="images/nicholas.jpg.webp" type="image/webp"><img src="images/nicholas.jpg" alt="Nicholas Wang" loading="lazy" width="412" height="423"></picture>
+          </div></div>
+          <h3>Nicholas Wang</h3>
+          <p class="role">Vice President</p>
+        </div>
+        <div class="team-card" onclick="openBio('lori')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <picture><source srcset="images/lori.jpg.webp" type="image/webp"><img src="images/lori.jpg" alt="Lori Li" loading="lazy" width="769" height="1024"></picture>
+          </div></div>
+          <h3>Lori Li</h3>
+          <p class="role">Secretary</p>
+        </div>
+        <div class="team-card" onclick="openBio('nathan')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <picture><source srcset="images/nathan.jpg.webp" type="image/webp"><img src="images/nathan.jpg" alt="Nathan Chen" loading="lazy" width="768" height="1024"></picture>
+          </div></div>
+          <h3>Nathan Chen</h3>
+          <p class="role">Member</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Outreach Team -->
     <div class="section">
       <h2 class="team-section-title">Outreach</h2>
@@ -597,6 +632,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <script>
     const bios = {
+      vihaan: {"name": "Vihaan Kaushik", "role": "President", "bio": "Vihaan is currently a high school sophomore in New York who is super passionate about poetry, biology, technology (more specifically AI and internet privacy), and photography. His favorite music artist is Glass Animals and he loves video games."},
+      nicholas: {"name": "Nicholas Wang", "role": "Vice President", "bio": "Nicholas is a student from Jericho, New York, with a strong interest in history and political science. This leads to his interest in the philosophy of history, most notably the works of Hegel, as well as the works of political philosophers from Plato to Locke. He also enjoys doing Model UN and playing video games."},
+      lori: {"name": "Lori Li", "role": "Secretary", "bio": "Lori is a student from Jericho, New York. She enjoys critical theory and postmodernism; specifically, the ideas of Mbembe, Baudrillard, Hegel, Anders, and Virilio. She is also passionate in topics critiquing techno-orientalism, settler colonialism, antiblackness, and sexism."},
+      nathan: {"name": "Nathan Chen", "role": "Member", "bio": "Nathan is a sophomore at Jericho Senior High School. He is interested in mathematics, science, and philosophy, and he is especially passionate about history and reading. Outside of school, he enjoys swimming and running."},
       aknar: {"name": "Aknar Aidarbekova", "role": "Chapter President", "bio": "Aknar is an 11th-grade student from Bishkek with a deep interest in both technology and human thought. She actively studies robotics and programming, balancing her technical pursuits with an exploration of philosophy, focusing specifically on ethics and the philosophy of religion. She excels in organizational leadership, technical problem-solving, and conceptual analysis."},
       arlen: {"name": "Arlen Makhmutov", "role": "Academic Lead & Research Coordinator", "bio": "Arlen is a student who demonstrates a profound commitment to academic and technological innovation. He focuses deeply on international law, with a specialized interest in Public International Law, examining the legal frameworks that govern global affairs. Alongside his legal pursuits, Arlen is an active MUN participant who also explores the cutting edge of technology, engaging with AI architectures and vibecoding. He excels in analytical thinking, technical system design, and structured debate."},
       abdulaziz: {"name": "Abdul Aziz Abdykarov", "role": "Event Coordinator", "bio": "Abdul Aziz is a 9th grade student from Bishkek who actively coordinates events and volunteer initiatives. As an experienced Model United Nations (MUN) participant, he helps organize student activities and community projects. His academic interests focus on history and philosophy, which he balances with a passion for sports and a healthy lifestyle. He excels in language studies, project organization, and structured debate."},

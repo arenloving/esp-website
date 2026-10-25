@@ -536,6 +536,13 @@ document.addEventListener('DOMContentLoaded', function() {
           <h3>Nathan Chen</h3>
           <p class="role">Member</p>
         </div>
+        <div class="team-card" onclick="openBio('yifan')">
+          <div class="team-avatar-wrap"><div class="team-avatar">
+            <picture><source srcset="images/yifan.jpg.webp" type="image/webp"><img src="images/yifan.jpg" alt="Yifan Gao" loading="lazy" width="214" height="214"></picture>
+          </div></div>
+          <h3>Yifan Gao</h3>
+          <p class="role">Member</p>
+        </div>
       </div>
     </div>
 
@@ -613,6 +620,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <script>
     const bios = {
+      yifan: {"name": "Yifan Gao", "role": "Member", "bio": "Yifan is a student from Jericho New York. As a debater, he loves critical and postmodern literature that challenges societal structures. Most notably, he enjoys reading Lacan, Baudrillard, Derrida and is currently trying to learn Bataille."},
       vihaan: {"name": "Vihaan Kaushik", "role": "President", "bio": "Vihaan is currently a high school sophomore in New York who is super passionate about poetry, biology, technology (more specifically AI and internet privacy), and photography. His favorite music artist is Glass Animals and he loves video games."},
       nicholas: {"name": "Nicholas Wang", "role": "Vice President", "bio": "Nicholas is a student from Jericho, New York, with a strong interest in history and political science. This leads to his interest in the philosophy of history, most notably the works of Hegel, as well as the works of political philosophers from Plato to Locke. He also enjoys doing Model UN and playing video games."},
       lori: {"name": "Lori Li", "role": "Secretary", "bio": "Lori is a student from Jericho, New York. She enjoys critical theory and postmodernism; specifically, the ideas of Mbembe, Baudrillard, Hegel, Anders, and Virilio. She is also passionate in topics critiquing techno-orientalism, settler colonialism, antiblackness, and sexism."},

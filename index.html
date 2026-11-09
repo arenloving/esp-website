@@ -145,6 +145,61 @@
       margin-top: 20px;
     }
 
+    /* Published article feature */
+    .home-publication {
+      background: var(--ivory);
+      border-top: 1px solid var(--light-border);
+      border-bottom: 1px solid var(--light-border);
+      padding: 56px 32px;
+    }
+    .home-publication-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+    }
+    .publication-source {
+      border-right: 1px solid var(--light-border);
+      padding-right: 28px;
+      color: var(--warm-gray);
+    }
+    .publication-source-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .publication-source-name {
+      display: block;
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--dark-brown);
+      margin: 8px 0;
+    }
+    .publication-source-description { font-size: 0.8rem; line-height: 1.6; }
+    .home-publication h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--dark-brown);
+      margin-bottom: 14px;
+    }
+    .publication-byline { font-size: 0.85rem; color: var(--warm-gray); margin-bottom: 16px; }
+    .publication-summary { font-size: 1.05rem; line-height: 1.8; color: var(--muted-brown); }
+    .home-publication .btn { margin-top: 24px; }
+    .home-publication .btn:focus-visible { outline: 2px solid var(--dark-brown); outline-offset: 5px; }
+    @media (max-width: 640px) {
+      .home-publication { padding: 36px 24px; }
+      .home-publication-inner { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+      .publication-source { border-right: 0; border-bottom: 1px solid var(--light-border); padding: 0 0 20px; }
+      .publication-source-name { margin: 4px 0; font-size: 2rem; }
+    }
+
     /* Painting break */
     .home-painting {
       text-align: center;
@@ -232,6 +287,23 @@
       </div>
     </div>
   </div>
+
+  <!-- Article published on PLATO -->
+  <section class="home-publication" id="plato-article" aria-labelledby="plato-article-title">
+    <div class="home-publication-inner">
+      <div class="publication-source">
+        <span class="publication-source-label">Published on</span>
+        <strong class="publication-source-name">PLATO</strong>
+        <p class="publication-source-description">Philosophy Learning and Teaching Organization</p>
+      </div>
+      <div class="publication-content">
+        <h2 id="plato-article-title">Our Experience Building Eastside Philosophy</h2>
+        <p class="publication-byline">By Aren Loving and Jeffery Lou &middot; <time datetime="2026-10-28">October 28, 2026</time></p>
+        <p class="publication-summary">Aren Loving and Jeffery Lou reflect on building Eastside Philosophy&mdash;from a school club to a student network connecting young people with philosophers.</p>
+        <a href="https://plato-philosophy.org/our-experience-building-eastside-philosophy/" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Read Our Experience Building Eastside Philosophy on PLATO (opens in a new tab)">Read on PLATO &rarr;</a>
+      </div>
+    </div>
+  </section>
 
   <!-- What We Offer - Full width banners -->
   <div class="offering-banners">
